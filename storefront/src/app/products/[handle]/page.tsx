@@ -2,18 +2,31 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProductByHandle, type Product } from "@/lib/shopify";
 import { ProductBuy } from "@/components/product-buy";
+import { Jersey } from "@/components/jersey";
+
+type Colorway = "beton" | "craie" | "signal";
+
+function colorwayFor(handle: string): Colorway {
+  const h = handle.toLowerCase();
+  if (h.includes("home") || h.includes("beton") || h.includes("béton")) return "beton";
+  if (h.includes("away") || h.includes("craie")) return "craie";
+  return "signal";
+}
+
+const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
+const brandHtml = (html: string) => html.replace(/GRYD/g, "redline26").replace(/Gryd/g, "redline26");
 
 const DEMO: Record<string, Product> = {
-  "gryd-home-beton": demo("gryd-home-beton", "GRYD Home / Béton", "55.00"),
-  "gryd-away-craie": demo("gryd-away-craie", "GRYD Away / Craie", "55.00"),
-  "gryd-third-signal": demo("gryd-third-signal", "GRYD Third / Signal", "60.00"),
+  "gryd-home-beton": demo("gryd-home-beton", "redline26 Home / Béton", "55.00"),
+  "gryd-away-craie": demo("gryd-away-craie", "redline26 Away / Craie", "55.00"),
+  "gryd-third-signal": demo("gryd-third-signal", "redline26 Third / Signal", "60.00"),
 };
 
 function demo(handle: string, title: string, price: string): Product {
   return {
     id: handle, handle, title,
-    description: "Maillot GRYD imprimé à la demande. Série numérotée.",
-    descriptionHtml: "<p>Maillot GRYD imprimé à la demande à Paris. Série limitée numérotée. Coupe unisexe.</p>",
+    description: "Maillot redline26 imprimé à la demande. Série numérotée.",
+    descriptionHtml: "<p>Maillot redline26 imprimé à la demande à Paris. Série limitée numérotée. Coupe unisexe.</p>",
     featuredImage: null, images: [],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },
     options: [{ name: "Taille", values: ["S", "M", "L", "XL"] }],
@@ -37,44 +50,59 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   if (!product) product = DEMO[handle] ?? null;
   if (!product) notFound();
 
+  const colorway = colorwayFor(product.handle);
+
   return (
     <div className="pdp">
       <Link href="/#drop" className="pdp-back">← Retour à la grille</Link>
 
       <div className="pdp-grid">
         <div className="pdp-visual">
+          <span className="pdp-sector">Drop 01 · Pièce originale</span>
           {product.featuredImage ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={product.featuredImage.url} alt={product.featuredImage.altText ?? product.title} />
+            <img src={product.featuredImage.url} alt={product.featuredImage.altText ? brandTitle(product.featuredImage.altText) : brandTitle(product.title)} />
           ) : (
-            <div className="jersey-lg" aria-hidden />
+            <div className="jersey-lg" aria-hidden>
+              <Jersey face="front" colorway={colorway} />
+            </div>
           )}
+          <div className="pdp-visual-mark display" aria-hidden>redline26</div>
         </div>
 
         <div className="pdp-info">
-          <h1 className="display">{product.title}</h1>
+          <div className="pdp-kicker">Secteur produit · Paris</div>
+          <h1 className="display">{brandTitle(product.title)}</h1>
           <div
             className="pdp-desc"
-            dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+            dangerouslySetInnerHTML={{ __html: brandHtml(product.descriptionHtml) }}
           />
           <ProductBuy product={product} />
-          <p className="pdp-ship">Impression à la demande · expédié sous 5–8 jours · retours 14 j</p>
+          <div className="pdp-notes" aria-label="Informations produit">
+            <span>Impression à la demande</span>
+            <span>Expédié sous 5-8 jours</span>
+            <span>Retours 14 j</span>
+          </div>
         </div>
       </div>
 
       <style>{`
-        .pdp{position:relative;z-index:2;padding:120px 40px 80px;max-width:1200px;margin:0 auto}
+        .pdp{position:relative;z-index:2;padding:120px 40px 90px;max-width:1220px;margin:0 auto}
+        .pdp::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 20% 18%,rgba(228,255,58,.08),transparent 26%),linear-gradient(115deg,transparent 0 58%,rgba(242,240,235,.035) 58% 59%,transparent 59%);pointer-events:none}
         .pdp-back{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.6;margin-bottom:40px}
         .pdp-back:hover{opacity:1;color:var(--signal)}
         .pdp-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start}
-        .pdp-visual{position:relative;aspect-ratio:4/5;background:radial-gradient(circle at 50% 40%,var(--concrete-700),var(--concrete-900));border:1px solid var(--line);overflow:hidden}
+        .pdp-visual{position:relative;aspect-ratio:4/5;background:radial-gradient(circle at 50% 38%,rgba(228,255,58,.12),transparent 22%),radial-gradient(circle at 50% 45%,var(--concrete-700),var(--concrete-900) 66%);border:1px solid var(--line);overflow:hidden;box-shadow:0 38px 100px rgba(0,0,0,.34)}
+        .pdp-visual::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(242,240,235,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(242,240,235,.07) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(circle at 50% 42%,#000 20%,transparent 72%)}
+        .pdp-sector{position:absolute;top:22px;left:22px;z-index:2;border:1px solid var(--line);background:rgba(10,11,13,.48);padding:8px 12px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--signal)}
         .pdp-visual img{width:100%;height:100%;object-fit:cover}
-        .jersey-lg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60%;aspect-ratio:1/1.15}
-        .jersey-lg::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--concrete-700),var(--concrete-800));clip-path:polygon(0 18%,22% 18%,32% 6%,68% 6%,78% 18%,100% 18%,100% 32%,82% 40%,82% 100%,18% 100%,18% 40%,0 32%);border:1px solid rgba(228,255,58,.3)}
-        .jersey-lg::after{content:"07";position:absolute;top:42%;left:50%;transform:translateX(-50%);font-size:72px;font-weight:800;color:var(--signal)}
+        .jersey-lg{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%) rotate(-1deg);width:min(58%,360px);filter:drop-shadow(0 34px 42px rgba(0,0,0,.58));z-index:1}
+        .pdp-visual-mark{position:absolute;right:-.08em;bottom:-.12em;font-size:clamp(78px,13vw,180px);line-height:.8;color:rgba(242,240,235,.045);letter-spacing:-.05em;pointer-events:none}
+        .pdp-kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--signal);margin-bottom:22px}
         .pdp-info h1{font-size:clamp(32px,5vw,56px);margin-bottom:24px;line-height:.95}
         .pdp-desc{font-size:15px;line-height:1.8;opacity:.65;margin-bottom:36px}
-        .pdp-ship{font-size:12px;letter-spacing:.08em;opacity:.4;margin-top:22px}
+        .pdp-notes{display:grid;grid-template-columns:1fr;gap:1px;margin-top:24px;background:var(--line);border:1px solid var(--line)}
+        .pdp-notes span{background:rgba(22,24,28,.8);padding:14px 16px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.72}
         @media(max-width:820px){.pdp{padding:100px 22px 60px}.pdp-grid{grid-template-columns:1fr;gap:34px}}
       `}</style>
     </div>

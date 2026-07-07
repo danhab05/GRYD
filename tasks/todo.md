@@ -1,14 +1,16 @@
-# Plan Stack A Hero GRYD
+# Plan Audit Pages redline26
 
-- [x] Auditer la hero actuelle et les composants maillot.
-- [x] Ajouter les dépendances Stack A manquantes.
-- [x] Implémenter ScrollTrigger + CSS 3D transforms sur le maillot.
-- [x] Ajouter la célébration de but : flash, BUT., anneaux, confettis, son activable.
-- [x] Vérifier responsive, prefers-reduced-motion et build.
-- [ ] Créer une PR puis merger dans main si validation locale OK.
+- [x] Lister et relire toutes les routes App Router.
+- [x] Reproduire les pages cassées avec build/dev logs.
+- [x] Corriger les bugs bloquants par page.
+- [x] Harmoniser `/`, `/cart`, `/manifeste` et `/products/[handle]` avec la DA redline26.
+- [x] Renommer la marque visible de GRYD vers redline26.
+- [x] Vérifier responsive et build.
+- [ ] Créer une PR puis merger dans `main` si validation OK.
 
 ## Review
 
 - `npm run build` dans `storefront/` : OK.
-- La hero est maintenant pilotée par GSAP ScrollTrigger avec pin/scrub.
-- Le mode `prefers-reduced-motion` garde une pose statique sans confettis ni pin.
+- Routes testées en local : `/`, `/cart`, `/manifeste`, `/products/gryd-home-beton` répondent `200`.
+- Marque visible renommée en `redline26` côté front, sans changer les handles Shopify existants.
+- Textes visibles repassés en vouvoiement.
