@@ -155,7 +155,14 @@ export type Cart = {
   lines: Array<{
     id: string;
     quantity: number;
-    merchandise: { id: string; title: string; product: { title: string; handle: string } };
+    cost: { totalAmount: Money; amountPerQuantity: Money };
+    merchandise: {
+      id: string;
+      title: string;
+      price: Money;
+      image: ProductImage | null;
+      product: { title: string; handle: string };
+    };
   }>;
 };
 
@@ -169,9 +176,16 @@ const CART_FRAGMENT = /* GraphQL */ `
       nodes {
         id
         quantity
+        cost {
+          totalAmount { amount currencyCode }
+          amountPerQuantity { amount currencyCode }
+        }
         merchandise {
           ... on ProductVariant {
-            id title
+            id
+            title
+            price { amount currencyCode }
+            image { url altText width height }
             product { title handle }
           }
         }
@@ -205,6 +219,24 @@ export async function addToCart(cartId: string, variantId: string, quantity = 1)
     { cartId, lines: [{ merchandiseId: variantId, quantity }] }
   );
   return normalizeCart(data.cartLinesAdd.cart);
+}
+
+export async function updateCartLine(
+  cartId: string,
+  lineId: string,
+  quantity: number
+): Promise<Cart> {
+  // quantity = 0 → Shopify retire la ligne. On laisse le back gérer ce cas.
+  const data = await shopifyFetch<{ cartLinesUpdate: { cart: any } }>(
+    /* GraphQL */ `
+      ${CART_FRAGMENT}
+      mutation UpdateLine($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+        cartLinesUpdate(cartId: $cartId, lines: $lines) { cart { ...CartFields } }
+      }
+    `,
+    { cartId, lines: [{ id: lineId, quantity }] }
+  );
+  return normalizeCart(data.cartLinesUpdate.cart);
 }
 
 export async function removeFromCart(cartId: string, lineId: string): Promise<Cart> {

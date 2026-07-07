@@ -24,6 +24,7 @@ import {
   addToCart as apiAddToCart,
   createCart,
   removeFromCart as apiRemoveFromCart,
+  updateCartLine as apiUpdateCartLine,
   type Cart,
 } from "@/lib/shopify";
 
@@ -35,6 +36,7 @@ type CartContextValue = {
   close: () => void;
   add: (variantId: string, quantity?: number) => Promise<void>;
   remove: (lineId: string) => Promise<void>;
+  updateQuantity: (lineId: string, quantity: number) => Promise<void>;
   checkout: () => void;
 };
 
@@ -81,6 +83,22 @@ export function CartProvider({ children }: { children: ReactNode }) {
     [cart]
   );
 
+  const updateQuantity = useCallback(
+    async (lineId: string, quantity: number) => {
+      if (!cart) return;
+      // Garde-fou : en dessous de 1 on retire la ligne franchement.
+      if (quantity < 1) return remove(lineId);
+      setIsLoading(true);
+      try {
+        const updated = await apiUpdateCartLine(cart.id, lineId, quantity);
+        setCart(updated);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [cart, remove]
+  );
+
   const checkout = useCallback(() => {
     if (cart?.checkoutUrl) window.location.href = cart.checkoutUrl;
   }, [cart]);
@@ -94,9 +112,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
       close: () => setIsOpen(false),
       add,
       remove,
+      updateQuantity,
       checkout,
     }),
-    [cart, isOpen, isLoading, add, remove, checkout]
+    [cart, isOpen, isLoading, add, remove, updateQuantity, checkout]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCart } from "@/lib/cart-context";
 
@@ -67,6 +68,9 @@ export function MiniCart() {
                   <button className="mc-checkout" onClick={checkout} disabled={isLoading}>
                     {isLoading ? "..." : "Payer →"}
                   </button>
+                  <Link href="/cart" className="mc-full" onClick={close}>
+                    Voir le panier complet
+                  </Link>
                   <p className="mc-note">Apple Pay · Google Pay · Carte — paiement sécurisé</p>
                 </div>
               </>
@@ -96,6 +100,8 @@ export function MiniCart() {
             .mc-checkout{width:100%;background:var(--signal);color:var(--concrete-900);border:none;padding:18px;font-size:14px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;transition:transform .3s}
             .mc-checkout:hover:not(:disabled){transform:translateY(-2px)}
             .mc-checkout:disabled{opacity:.5}
+            .mc-full{display:block;text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-top:14px;text-decoration:underline;text-underline-offset:3px}
+            .mc-full:hover{opacity:1;color:var(--signal)}
             .mc-note{text-align:center;font-size:11px;opacity:.4;margin-top:12px;letter-spacing:.06em}
           `}</style>
         </>

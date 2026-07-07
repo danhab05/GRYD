@@ -15,7 +15,7 @@ export function Nav() {
       <div className="nav-links">
         <Link href="/">Boutique</Link>
         <Link href="/#drop">Le Drop</Link>
-        <Link href="/#manifeste">Manifeste</Link>
+        <Link href="/manifeste">Manifeste</Link>
       </div>
       <button className="cart-btn" onClick={open} aria-label="Ouvrir le panier">
         PANIER ({count})
