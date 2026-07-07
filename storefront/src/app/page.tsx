@@ -42,6 +42,10 @@ const money = (a: string, c = "EUR") =>
   new Intl.NumberFormat("fr-FR", { style: "currency", currency: c, maximumFractionDigits: 0 }).format(Number(a));
 
 const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
+const SAFE_ASSETS = [
+  { src: "/redline26/IMG-20260707-WA0079.jpg", alt: "Illustration football rose et crème" },
+  { src: "/redline26/IMG-20260707-WA0080.jpg", alt: "Texture crampon noir et rose" },
+];
 
 export default async function HomePage() {
   let products: Product[];
@@ -59,10 +63,30 @@ export default async function HomePage() {
       <div className="marquee" aria-hidden>
         <div className="marquee-track">
           {Array.from({ length: 2 }).map((_, i) => (
-            <span key={i}>Nouveau drop / Fabriqué sur commande / Édition Paris / Séries numérotées / </span>
+            <span key={i}>Nouveau drop / Rouge archive / Crème papier / Bleu nuit / Fabriqué sur commande / </span>
           ))}
         </div>
       </div>
+
+      <section className="mood" aria-label="Direction artistique redline26">
+        <div className="mood-copy">
+          <span className="mood-kicker">Direction visuelle</span>
+          <h2 className="display">Archive football, affiche brute, bitume parisien.</h2>
+          <p>
+            La nouvelle DA tire vers le poster vintage : crème usé, rouge profond, bleu nuit,
+            touches or et texture imprimée. Les visuels protégés restent hors site ; on garde
+            l'énergie, pas les copies.
+          </p>
+        </div>
+        <div className="mood-grid">
+          {SAFE_ASSETS.map((asset, i) => (
+            <figure className={`mood-card mood-card-${i + 1}`} key={asset.src}>
+              <Image src={asset.src} alt={asset.alt} fill sizes="(max-width:820px) 90vw, 34vw" />
+              <figcaption>{i === 0 ? "Geste" : "Texture"}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
 
       <section className="drop" id="drop">
         <div className="drop-head">
@@ -120,9 +144,22 @@ export default async function HomePage() {
 function HomeStyles() {
   return (
     <style>{`
-      .marquee{position:relative;z-index:2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;white-space:nowrap;background:var(--concrete-800)}
+      .marquee{position:relative;z-index:2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;white-space:nowrap;background:linear-gradient(90deg,var(--concrete-800),#241015,var(--concrete-800))}
       .marquee-track{display:inline-block;animation:scroll 26s linear infinite;font-size:14px;letter-spacing:.3em;text-transform:uppercase;opacity:.55}
       @keyframes scroll{to{transform:translateX(-50%)}}
+
+      .mood{position:relative;z-index:2;display:grid;grid-template-columns:.9fr 1.1fr;gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+      .mood-copy{background:linear-gradient(135deg,rgba(16,24,39,.96),rgba(7,10,18,.96));padding:74px 40px;display:flex;flex-direction:column;justify-content:center;min-height:520px}
+      .mood-kicker{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+      .mood-copy h2{font-size:clamp(34px,5vw,74px);line-height:.9;margin-bottom:28px;color:var(--chalk)}
+      .mood-copy p{font-size:15px;line-height:1.9;opacity:.68;max-width:560px}
+      .mood-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+      .mood-card{position:relative;min-height:520px;overflow:hidden;background:var(--concrete-900)}
+      .mood-card img{object-fit:cover;filter:saturate(.92) contrast(1.08)}
+      .mood-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(7,10,18,.78));mix-blend-mode:multiply}
+      .mood-card-1 img{object-position:center 44%}
+      .mood-card-2 img{object-position:center center}
+      .mood-card figcaption{position:absolute;left:22px;bottom:22px;z-index:2;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--chalk);border:1px solid rgba(244,233,211,.22);background:rgba(7,10,18,.42);padding:8px 12px}
 
       .drop{position:relative;z-index:2;padding:120px 40px}
       .drop-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px}
@@ -130,7 +167,7 @@ function HomeStyles() {
       .drop-head p{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.5;text-align:right;line-height:1.8}
       .products{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
       .card{position:relative;background:var(--concrete-900);aspect-ratio:3/4;overflow:hidden;display:flex;align-items:flex-end;padding:26px}
-      .card-visual{position:absolute;inset:0;background:radial-gradient(circle at 50% 38%,var(--concrete-700),var(--concrete-900));transition:transform .8s cubic-bezier(.16,1,.3,1)}
+      .card-visual{position:absolute;inset:0;background:radial-gradient(circle at 50% 38%,rgba(185,150,75,.2),transparent 26%),radial-gradient(circle at 50% 38%,var(--concrete-700),var(--concrete-900));transition:transform .8s cubic-bezier(.16,1,.3,1)}
       .card:hover .card-visual{transform:scale(1.04)}
       .card-jersey{position:absolute;top:50%;left:50%;transform:translate(-50%,-54%);width:60%;filter:drop-shadow(0 24px 34px rgba(0,0,0,.55));transition:transform .8s cubic-bezier(.16,1,.3,1)}
       .card:hover .card-jersey{transform:translate(-50%,-58%) rotate(-2deg)}
@@ -148,7 +185,7 @@ function HomeStyles() {
       .foot{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:40px;border-top:1px solid var(--line);font-size:12px;letter-spacing:.1em;opacity:.6}
       .foot .logo{font-size:18px;letter-spacing:.24em;opacity:1}
 
-      @media(max-width:820px){.products{grid-template-columns:1fr 1fr}.drop,.manifeste-teaser{padding-left:22px;padding-right:22px}}
+      @media(max-width:820px){.mood{grid-template-columns:1fr}.mood-copy{min-height:auto;padding:62px 22px}.mood-grid{grid-template-columns:1fr}.mood-card{min-height:430px}.products{grid-template-columns:1fr 1fr}.drop,.manifeste-teaser{padding-left:22px;padding-right:22px}}
       @media(max-width:520px){.products{grid-template-columns:1fr}}
     `}</style>
   );

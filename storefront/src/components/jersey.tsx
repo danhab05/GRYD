@@ -7,9 +7,9 @@
 type Colorway = "beton" | "craie" | "signal";
 
 const COLORWAYS: Record<Colorway, { body: string; trim: string; ink: string; seam: string }> = {
-  beton: { body: "#22252B", trim: "#E4FF3A", ink: "#F2F0EB", seam: "rgba(242,240,235,.14)" },
-  craie: { body: "#F2F0EB", trim: "#0A0B0D", ink: "#0A0B0D", seam: "rgba(10,11,13,.14)" },
-  signal: { body: "#E4FF3A", trim: "#0A0B0D", ink: "#0A0B0D", seam: "rgba(10,11,13,.16)" },
+  beton: { body: "#101827", trim: "#B9964B", ink: "#F4E9D3", seam: "rgba(244,233,211,.14)" },
+  craie: { body: "#F4E9D3", trim: "#E1161D", ink: "#070A12", seam: "rgba(7,10,18,.14)" },
+  signal: { body: "#E1161D", trim: "#F4E9D3", ink: "#F4E9D3", seam: "rgba(244,233,211,.18)" },
 };
 
 // Silhouette maillot manches courtes, col en V.
