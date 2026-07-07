@@ -21,6 +21,31 @@ const SAFE_ASSETS = [
   { src: "/redline26/IMG-20260707-WA0080.jpg", alt: "Texture crampon noir et rose" },
 ];
 
+const COPY_BY_HANDLE: Record<string, { title: string; html: string }> = {
+  "gryd-home-beton": {
+    title: "redline26 Home / Bleu nuit",
+    html:
+      "<p><strong>Drop 01 · Secteur A1.</strong> Le maillot fondation de redline26. Bleu nuit, crème papier et touche or : une pièce inspirée des affiches football vintage, pensée pour rester 100% originale.</p><p>Imprimé à la demande. Aucune affiliation à une fédération, un club ou une marque existante.</p>",
+  },
+  "gryd-away-craie": {
+    title: "redline26 Away / Crème papier",
+    html:
+      "<p><strong>Drop 01 · Secteur B2.</strong> Une base crème, des détails rouge archive et une lecture plus lifestyle. Le maillot garde l'énergie du football sans reprendre de blason, sponsor ou équipe réelle.</p><p>Série numérotée, coupe unisexe, imprimée à la demande.</p>",
+  },
+  "gryd-third-signal": {
+    title: "redline26 Third / Rouge archive",
+    html:
+      "<p><strong>Drop 01 · Secteur C3.</strong> La pièce la plus frontale du drop : rouge archive, crème papier, lignes nettes et énergie poster. Une silhouette football/streetwear originale, sans référence protégée.</p><p>Impression à la demande, série limitée numérotée, coupe unisexe.</p>",
+  },
+};
+
+function displayCopy(product: Product) {
+  return COPY_BY_HANDLE[product.handle] ?? {
+    title: brandTitle(product.title),
+    html: brandHtml(product.descriptionHtml),
+  };
+}
+
 const DEMO: Record<string, Product> = {
   "gryd-home-beton": demo("gryd-home-beton", "redline26 Home / Béton", "55.00"),
   "gryd-away-craie": demo("gryd-away-craie", "redline26 Away / Craie", "55.00"),
@@ -56,6 +81,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   if (!product) notFound();
 
   const colorway = colorwayFor(product.handle);
+  const copy = displayCopy(product);
 
   return (
     <div className="pdp">
@@ -66,7 +92,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
           <span className="pdp-sector">Drop 01 · Pièce originale</span>
           {product.featuredImage ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={product.featuredImage.url} alt={product.featuredImage.altText ? brandTitle(product.featuredImage.altText) : brandTitle(product.title)} />
+            <img src={product.featuredImage.url} alt={product.featuredImage.altText ? brandTitle(product.featuredImage.altText) : copy.title} />
           ) : (
             <div className="jersey-lg" aria-hidden>
               <Jersey face="front" colorway={colorway} />
@@ -77,10 +103,10 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
         <div className="pdp-info">
           <div className="pdp-kicker">Secteur produit · Paris</div>
-          <h1 className="display">{brandTitle(product.title)}</h1>
+          <h1 className="display">{copy.title}</h1>
           <div
             className="pdp-desc"
-            dangerouslySetInnerHTML={{ __html: brandHtml(product.descriptionHtml) }}
+            dangerouslySetInnerHTML={{ __html: copy.html }}
           />
           <ProductBuy product={product} />
           <div className="pdp-notes" aria-label="Informations produit">
