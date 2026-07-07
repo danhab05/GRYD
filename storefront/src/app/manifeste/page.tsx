@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "GRYD — Manifeste",
+  title: "redline26 — Manifeste",
   description:
-    "Chaque maillot est une case de la grille. GRYD ne copie aucune équipe : nos propres couleurs, nos propres secteurs, notre propre ville. Imprimé à la demande à Paris.",
+    "Chaque maillot est une case de la grille. redline26 ne copie aucune équipe : nos propres couleurs, nos propres secteurs, notre propre ville. Imprimé à la demande à Paris.",
 };
 
 const SECTEURS = [
@@ -12,19 +12,19 @@ const SECTEURS = [
     n: "01",
     titre: "La ville est une grille",
     corps:
-      "Paris se lit comme un plan : des lignes, des secteurs, des cases. On a pris ce maillage comme trame de départ. Chaque maillot occupe une case — un secteur, une couleur, un numéro. Assemble-les et tu recomposes la grille.",
+      "Paris se lit comme un plan : des lignes, des secteurs, des cases. On a pris ce maillage comme trame de départ. Chaque maillot occupe une case — un secteur, une couleur, un numéro. Assemblez-les et vous recomposez la grille.",
   },
   {
     n: "02",
     titre: "Aucune copie, jamais",
     corps:
-      "GRYD ne reproduit aucun club, aucune sélection, aucun blason existant. Zéro affiliation. On dessine nos propres couleurs, nos propres armoiries, notre propre terrain. C'est une contrainte, et c'est surtout le sujet : inventer une équipe qui n'existe que sur le bitume.",
+      "redline26 ne reproduit aucun club, aucune sélection, aucun blason existant. Zéro affiliation. On dessine nos propres couleurs, nos propres armoiries, notre propre terrain. C'est une contrainte, et c'est surtout le sujet : inventer une équipe qui n'existe que sur le bitume.",
   },
   {
     n: "03",
-    titre: "Rien n'est produit sans toi",
+    titre: "Rien n'est produit sans vous",
     corps:
-      "Impression à la demande. Aucune pièce n'existe tant que tu ne l'as pas commandée — pas de stock mort, pas de surproduction. Tu commandes une case, on l'imprime, on te l'envoie. Séries limitées, numérotées.",
+      "Impression à la demande. Aucune pièce n'existe tant que vous ne l'avez pas commandée — pas de stock mort, pas de surproduction. Vous commandez une case, on l'imprime, on vous l'envoie. Séries limitées, numérotées.",
   },
   {
     n: "04",
@@ -57,21 +57,25 @@ export default function ManifestePage() {
       </section>
 
       <section className="mf-outro">
-        <p className="display">Compose ta grille.</p>
+        <p className="display">Composez votre grille.</p>
         <Link href="/#drop" className="mf-cta">Voir le Drop 01 →</Link>
       </section>
 
       <style>{`
         .mf{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:140px 40px 100px}
+        .mf::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 78% 12%,rgba(228,255,58,.09),transparent 26%),linear-gradient(110deg,transparent 0 48%,rgba(242,240,235,.04) 48% 49%,transparent 49%);pointer-events:none}
 
-        .mf-hero{border-bottom:1px solid var(--line);padding-bottom:70px;margin-bottom:20px}
+        .mf-hero{position:relative;border-bottom:1px solid var(--line);padding-bottom:70px;margin-bottom:20px}
+        .mf-hero::after{content:"redline26";position:absolute;right:0;bottom:-.11em;font-size:clamp(60px,12vw,150px);line-height:.8;font-weight:800;letter-spacing:-.05em;color:rgba(242,240,235,.045);pointer-events:none}
         .mf-eyebrow{font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--signal);margin-bottom:34px}
         .mf-title{font-size:clamp(44px,9vw,120px);line-height:.9;letter-spacing:-.02em}
         .mf-title .signal{color:var(--signal)}
 
         .mf-secteurs{display:flex;flex-direction:column}
-        .mf-secteur{display:grid;grid-template-columns:140px 1fr;gap:40px;padding:56px 0;border-bottom:1px solid var(--line);align-items:start}
-        .mf-n{font-size:clamp(40px,6vw,80px);color:var(--line);line-height:1;letter-spacing:0}
+        .mf-secteur{position:relative;display:grid;grid-template-columns:140px 1fr;gap:40px;padding:56px 0;border-bottom:1px solid var(--line);align-items:start}
+        .mf-secteur::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--signal);transition:width .3s}
+        .mf-secteur:hover::before{width:3px}
+        .mf-n{font-size:clamp(40px,6vw,80px);color:rgba(228,255,58,.2);line-height:1;letter-spacing:0}
         .mf-secteur-body h2{font-size:clamp(24px,3.4vw,40px);margin-bottom:20px;line-height:1}
         .mf-secteur-body p{font-size:16px;line-height:1.85;opacity:.62;max-width:620px}
 

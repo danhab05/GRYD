@@ -10,7 +10,7 @@ export function Nav() {
   return (
     <nav className="nav">
       <Link href="/" className="logo">
-        GRYD
+        redline26
       </Link>
       <div className="nav-links">
         <Link href="/">Boutique</Link>

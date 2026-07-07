@@ -6,11 +6,11 @@ import { MiniCart } from "@/components/mini-cart";
 import { SmoothScroll } from "@/components/smooth-scroll";
 
 export const metadata: Metadata = {
-  title: "GRYD — Porte la ville",
+  title: "redline26 — Porte la ville",
   description:
     "Maillots de foot originaux, imprimés à la demande à Paris. Séries limitées numérotées. Chaque maillot est une case de la grille.",
   openGraph: {
-    title: "GRYD — Porte la ville",
+    title: "redline26 — Porte la ville",
     description: "Maillots originaux, édition Paris. Séries numérotées.",
     type: "website",
   },

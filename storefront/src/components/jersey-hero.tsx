@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Hero cinématique GRYD — Stack A.
+ * Hero cinématique redline26 — Stack A.
  * GSAP ScrollTrigger pilote la rotation CSS 3D du maillot et déclenche la
  * célébration de but. Le son reste opt-in pour garder une UX propre.
  */
@@ -171,7 +171,7 @@ export function JerseyHero() {
           <motion.h1 ref={topTitleRef} className="jh-title display" {...reveal(0.2)}>Porte</motion.h1>
         </span>
 
-        <div className="jh-jersey" aria-label="Maillot GRYD animé au scroll">
+        <div className="jh-jersey" aria-label="Maillot redline26 animé au scroll">
           <div className="jh-orbit" aria-hidden />
           <div className="jh-shadow" aria-hidden />
           <div className="jh-jersey-3d" ref={jerseyRef}>
@@ -179,7 +179,7 @@ export function JerseyHero() {
               <Jersey face="front" colorway="signal" />
             </div>
             <div className="jh-face jh-back">
-              <Jersey face="back" colorway="signal" number="07" name="GRYD" />
+              <Jersey face="back" colorway="signal" number="07" name="REDLINE26" />
             </div>
           </div>
         </div>

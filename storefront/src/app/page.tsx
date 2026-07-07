@@ -6,9 +6,9 @@ import { Jersey } from "@/components/jersey";
 
 /** Données de démo si le token Shopify n'est pas encore branché — le site tourne quand même. */
 const DEMO: Product[] = [
-  demo("gryd-home-beton", "GRYD Home / Béton", "55.00", "Secteur A1"),
-  demo("gryd-away-craie", "GRYD Away / Craie", "55.00", "Secteur B2"),
-  demo("gryd-third-signal", "GRYD Third / Signal", "60.00", "Secteur C3"),
+  demo("gryd-home-beton", "redline26 Home / Béton", "55.00", "Secteur A1"),
+  demo("gryd-away-craie", "redline26 Away / Craie", "55.00", "Secteur B2"),
+  demo("gryd-third-signal", "redline26 Third / Signal", "60.00", "Secteur C3"),
 ];
 
 function demo(handle: string, title: string, price: string, tag: string): Product {
@@ -40,6 +40,8 @@ function colorwayFor(handle: string, i: number): Colorway {
 
 const money = (a: string, c = "EUR") =>
   new Intl.NumberFormat("fr-FR", { style: "currency", currency: c, maximumFractionDigits: 0 }).format(Number(a));
+
+const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
 
 export default async function HomePage() {
   let products: Product[];
@@ -75,7 +77,7 @@ export default async function HomePage() {
                 {p.featuredImage ? (
                   <Image
                     src={p.featuredImage.url}
-                    alt={p.featuredImage.altText ?? p.title}
+                    alt={p.featuredImage.altText ? brandTitle(p.featuredImage.altText) : brandTitle(p.title)}
                     fill
                     sizes="(max-width:820px) 50vw, 33vw"
                     style={{ objectFit: "cover" }}
@@ -88,7 +90,7 @@ export default async function HomePage() {
               </div>
               <span className="card-tag">{SECTORS[i % SECTORS.length]}</span>
               <div className="card-label">
-                <span className="name">{p.title.replace(/^GRYD\s*/i, "")}</span>
+                <span className="name">{brandTitle(p.title).replace(/^redline26\s*/i, "")}</span>
                 <span className="price">{money(p.priceRange.minVariantPrice.amount, p.priceRange.minVariantPrice.currencyCode)}</span>
               </div>
             </Link>
@@ -99,15 +101,15 @@ export default async function HomePage() {
       <section className="manifeste-teaser">
         <h3 className="display">Chaque maillot est une case de la grille.</h3>
         <p>
-          GRYD ne copie aucune équipe. On dessine nos propres couleurs, nos propres secteurs,
-          notre propre ville. Imprimé à la demande à Paris — rien n'est produit tant que tu ne l'as pas voulu.
+          redline26 ne copie aucune équipe. On dessine nos propres couleurs, nos propres secteurs,
+          notre propre ville. Imprimé à la demande à Paris — rien n'est produit tant que vous ne l'avez pas voulu.
         </p>
         <Link href="/manifeste" className="teaser-cta">Lire le manifeste →</Link>
       </section>
 
       <footer className="foot">
-        <span className="logo display">GRYD</span>
-        <span>© {new Date().getFullYear()} · Paris · gryd.co</span>
+        <span className="logo display">redline26</span>
+        <span>© {new Date().getFullYear()} · Paris · redline26.co</span>
       </footer>
 
       <HomeStyles />

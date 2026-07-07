@@ -11,6 +11,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/lib/cart-context";
+import { Jersey } from "@/components/jersey";
+
+type Colorway = "beton" | "craie" | "signal";
+
+function colorwayFor(title: string, i: number): Colorway {
+  const value = title.toLowerCase();
+  if (value.includes("home") || value.includes("beton") || value.includes("béton")) return "beton";
+  if (value.includes("away") || value.includes("craie")) return "craie";
+  if (value.includes("third") || value.includes("signal")) return "signal";
+  return (["beton", "craie", "signal"] as Colorway[])[i % 3];
+}
+
+const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
 
 const money = (amount?: string, code = "EUR") =>
   amount
@@ -37,13 +50,13 @@ export default function CartPage() {
 
       {lines.length === 0 ? (
         <div className="cart-empty">
-          <p>Ta grille est vide.</p>
+          <p>Votre grille est vide.</p>
           <Link href="/#drop" className="cart-cta">Voir le Drop 01 →</Link>
         </div>
       ) : (
         <div className="cart-grid">
           <ul className="cart-lines">
-            {lines.map((l) => {
+            {lines.map((l, i) => {
               const size =
                 l.merchandise.title ??
                 l.merchandise.product.title;
@@ -53,20 +66,22 @@ export default function CartPage() {
                     {l.merchandise.image ? (
                       <Image
                         src={l.merchandise.image.url}
-                        alt={l.merchandise.image.altText ?? l.merchandise.product.title}
+                        alt={l.merchandise.image.altText ? brandTitle(l.merchandise.image.altText) : brandTitle(l.merchandise.product.title)}
                         fill
                         sizes="120px"
                         style={{ objectFit: "cover" }}
                       />
                     ) : (
-                      <div className="jersey-sm" aria-hidden />
+                      <div className="jersey-sm" aria-hidden>
+                        <Jersey face="front" colorway={colorwayFor(l.merchandise.product.title, i)} />
+                      </div>
                     )}
                   </div>
 
                   <div className="line-body">
                     <div className="line-top">
                       <Link href={`/products/${l.merchandise.product.handle}`} className="line-name">
-                        {l.merchandise.product.title}
+                        {brandTitle(l.merchandise.product.title)}
                       </Link>
                       <span className="line-total">
                         {money(l.cost.totalAmount.amount, l.cost.totalAmount.currencyCode)}
@@ -140,6 +155,16 @@ export default function CartPage() {
           margin: 0 auto;
           padding: 120px 40px 100px;
         }
+        .cart::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          z-index: -1;
+          background:
+            radial-gradient(circle at 84% 18%, rgba(228, 255, 58, 0.08), transparent 28%),
+            linear-gradient(120deg, transparent 0 64%, rgba(242, 240, 235, 0.035) 64% 65%, transparent 65%);
+          pointer-events: none;
+        }
         .cart-back {
           display: inline-block;
           font-size: 12px;
@@ -176,8 +201,9 @@ export default function CartPage() {
           flex-direction: column;
           align-items: flex-start;
           gap: 24px;
-          padding: 60px 0;
-          opacity: 0.85;
+          padding: 58px;
+          border: 1px solid var(--line);
+          background: linear-gradient(135deg, rgba(22, 24, 28, 0.92), rgba(10, 11, 13, 0.7));
         }
         .cart-empty p {
           font-size: 18px;
@@ -222,21 +248,24 @@ export default function CartPage() {
           border: 1px solid var(--line);
           overflow: hidden;
         }
+        .line-visual::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(242, 240, 235, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(242, 240, 235, 0.08) 1px, transparent 1px);
+          background-size: 22px 22px;
+          opacity: 0.35;
+        }
         .jersey-sm {
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%);
-          width: 62%;
-          aspect-ratio: 1 / 1.15;
-        }
-        .jersey-sm::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(135deg, var(--concrete-700), var(--concrete-800));
-          clip-path: polygon(0 18%, 22% 18%, 32% 6%, 68% 6%, 78% 18%, 100% 18%, 100% 32%, 82% 40%, 82% 100%, 18% 100%, 18% 40%, 0 32%);
-          border: 1px solid rgba(228, 255, 58, 0.25);
+          z-index: 1;
+          transform: translate(-50%, -52%);
+          width: 72%;
+          filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.55));
         }
         .line-body {
           display: flex;
@@ -323,8 +352,9 @@ export default function CartPage() {
           position: sticky;
           top: 110px;
           border: 1px solid var(--line);
-          background: var(--concrete-800);
+          background: linear-gradient(180deg, rgba(22, 24, 28, 0.96), rgba(10, 11, 13, 0.96));
           padding: 30px;
+          box-shadow: 0 28px 80px rgba(0, 0, 0, 0.3);
         }
         .sum-row {
           display: flex;

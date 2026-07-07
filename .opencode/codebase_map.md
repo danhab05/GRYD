@@ -1,10 +1,10 @@
-# Codebase Map — GRYD
+# Codebase Map — redline26
 
 Dernière mise à jour : 2026-07-07
 
 ## Vue d'ensemble
 
-GRYD est une boutique e-commerce headless pour maillots de foot originaux. Le front est une application Next.js dans `storefront/`, connectée à Shopify via l'API Storefront. Shopify gère catalogue, panier, checkout et paiements ; Printful doit gérer impression et logistique.
+redline26 est une boutique e-commerce headless pour maillots de foot originaux. Le front est une application Next.js dans `storefront/`, connectée à Shopify via l'API Storefront. Shopify gère catalogue, panier, checkout et paiements ; Printful doit gérer impression et logistique.
 
 ## Stack
 
@@ -14,7 +14,7 @@ GRYD est une boutique e-commerce headless pour maillots de foot originaux. Le fr
 
 ## Fichiers clés
 
-- `storefront/src/app/page.tsx` : home, hero GRYD, drop produit, teaser manifeste.
+- `storefront/src/app/page.tsx` : home, hero redline26, drop produit, teaser manifeste.
 - `storefront/src/components/jersey-hero.tsx` : hero cinématique Stack A avec ScrollTrigger, CSS 3D, confettis et son opt-in.
 - `storefront/src/components/jersey.tsx` : maillot SVG recto/verso réutilisé en hero et fallback produit.
 - `storefront/src/components/smooth-scroll.tsx` : Lenis global.

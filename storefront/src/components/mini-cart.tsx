@@ -9,6 +9,8 @@ const money = (amount?: string, code = "EUR") =>
     ? new Intl.NumberFormat("fr-FR", { style: "currency", currency: code }).format(Number(amount))
     : "—";
 
+const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
+
 export function MiniCart() {
   const { cart, isOpen, close, remove, checkout, isLoading } = useCart();
   const lines = cart?.lines ?? [];
@@ -39,8 +41,8 @@ export function MiniCart() {
 
             {lines.length === 0 ? (
               <div className="mc-empty">
-                <p>Ta grille est vide.</p>
-                <button onClick={close}>Voir le drop</button>
+                <p>Votre grille est vide.</p>
+                <Link href="/#drop" onClick={close}>Voir le drop</Link>
               </div>
             ) : (
               <>
@@ -48,7 +50,7 @@ export function MiniCart() {
                   {lines.map((l) => (
                     <li key={l.id}>
                       <div>
-                        <div className="mc-name">{l.merchandise.product.title}</div>
+                        <div className="mc-name">{brandTitle(l.merchandise.product.title)}</div>
                         <div className="mc-variant">
                           {l.merchandise.title} · ×{l.quantity}
                         </div>
@@ -81,14 +83,17 @@ export function MiniCart() {
             .mc-scrim{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.6);backdrop-filter:blur(2px)}
             .mc-panel{
               position:fixed;top:0;right:0;bottom:0;z-index:61;width:min(420px,90vw);
-              background:var(--concrete-800);border-left:1px solid var(--line);
+              background:linear-gradient(180deg,rgba(22,24,28,.98),rgba(10,11,13,.98));border-left:1px solid var(--line);
               display:flex;flex-direction:column;padding:26px;
+              box-shadow:-30px 0 90px rgba(0,0,0,.45);
             }
+            .mc-panel::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(242,240,235,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(242,240,235,.055) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(#000,transparent 75%);pointer-events:none}
+            .mc-panel>*{position:relative;z-index:1}
             .mc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
             .mc-head .display{font-size:22px}
             .mc-head button{background:none;border:none;color:var(--chalk);font-size:18px}
             .mc-empty{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;opacity:.7}
-            .mc-empty button{background:var(--chalk);color:var(--concrete-900);border:none;padding:12px 22px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+            .mc-empty a{background:var(--chalk);color:var(--concrete-900);border:none;padding:12px 22px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
             .mc-lines{flex:1;list-style:none;overflow-y:auto;display:flex;flex-direction:column;gap:2px}
             .mc-lines li{display:flex;justify-content:space-between;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
             .mc-name{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
