@@ -18,6 +18,13 @@ body{
 }
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
+::selection{background:var(--signal);color:var(--concrete-900)}
+
+/* Lenis (scroll fluide) — Lenis pilote le scroll, on lui laisse la main */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
 
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}

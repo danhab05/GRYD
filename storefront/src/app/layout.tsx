@@ -3,6 +3,7 @@ import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { Nav } from "@/components/nav";
 import { MiniCart } from "@/components/mini-cart";
+import { SmoothScroll } from "@/components/smooth-scroll";
 
 export const metadata: Metadata = {
   title: "GRYD — Porte la ville",
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr">
       <body>
         <CartProvider>
+          <SmoothScroll />
           <div className="grid-overlay" aria-hidden />
           <Nav />
           <MiniCart />
