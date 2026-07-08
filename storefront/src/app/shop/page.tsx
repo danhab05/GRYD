@@ -2,14 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllProducts, type Product } from "@/lib/shopify";
-import { Jersey } from "@/components/jersey";
+import { PRODUCT_PHOTO } from "@/lib/assets";
 
 export const metadata: Metadata = {
   title: "redline26 — Shop",
   description: "Tous les maillots redline26 : catalogue simple, fond blanc, pièces originales imprimées à la demande.",
 };
-
-const PHOTO = "/redline26/product-photo.jpg";
 
 const DEMO: Product[] = [
   demo("gryd-home-beton", "redline26 Home / Bleu nuit", "55.00"),
@@ -24,22 +22,12 @@ function demo(handle: string, title: string, price: string): Product {
     title,
     description: "Maillot redline26 original.",
     descriptionHtml: "<p>Maillot redline26 original.</p>",
-    featuredImage: { url: PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
-    images: [{ url: PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
+    featuredImage: { url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
+    images: [{ url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },
     options: [{ name: "Taille", values: ["S", "M", "L", "XL"] }],
     variants: [],
   };
-}
-
-type Colorway = "beton" | "craie" | "signal";
-
-function colorwayFor(handle: string, i: number): Colorway {
-  const h = handle.toLowerCase();
-  if (h.includes("home") || h.includes("beton")) return "beton";
-  if (h.includes("away") || h.includes("craie")) return "craie";
-  if (h.includes("third") || h.includes("signal")) return "signal";
-  return (["beton", "craie", "signal"] as Colorway[])[i % 3];
 }
 
 const money = (amount: string, currency = "EUR") =>
@@ -80,19 +68,13 @@ export default async function ShopPage() {
         {products.map((product, i) => (
           <Link href={`/products/${product.handle}`} className="shop-card" key={product.id}>
             <div className="visual">
-              {product.featuredImage ? (
-                <Image
-                  src={product.featuredImage.url}
-                  alt={product.featuredImage.altText ? brandTitle(product.featuredImage.altText) : brandTitle(product.title)}
-                  fill
-                  sizes="(max-width: 820px) 50vw, 25vw"
-                  style={{ objectFit: "cover" }}
-                />
-              ) : (
-                <div className="visual-jersey">
-                  <Jersey face="front" colorway={colorwayFor(product.handle, i)} />
-                </div>
-              )}
+              <Image
+                src={product.featuredImage?.url ?? PRODUCT_PHOTO}
+                alt={product.featuredImage?.altText ? brandTitle(product.featuredImage.altText) : brandTitle(product.title)}
+                fill
+                sizes="(max-width: 820px) 50vw, 25vw"
+                style={{ objectFit: "cover" }}
+              />
             </div>
             <div className="swatches" aria-hidden>
               <span />
@@ -119,7 +101,8 @@ export default async function ShopPage() {
         .shop-card{display:block;background:#fff;padding-bottom:24px;min-width:0}
         .visual{position:relative;aspect-ratio:1/1.16;background:#f3f3f3;overflow:hidden}
         .visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 68%,rgba(0,0,0,.04));pointer-events:none}
-        .visual-jersey{position:absolute;left:50%;top:50%;width:68%;transform:translate(-50%,-52%);filter:drop-shadow(0 20px 24px rgba(0,0,0,.18))}
+        .shop-card :global(img){transition:transform .55s cubic-bezier(.16,1,.3,1)}
+        .shop-card:hover :global(img){transform:scale(1.05)}
         .swatches{display:flex;gap:7px;padding:14px 18px 0}
         .swatches span{width:18px;height:18px;border-radius:50%;border:1px solid #cfcfcf;background:#0b5d7c}
         .swatches span:nth-child(2){background:#e1161d}

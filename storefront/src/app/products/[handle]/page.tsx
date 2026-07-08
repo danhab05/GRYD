@@ -3,16 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getProductByHandle, type Product } from "@/lib/shopify";
 import { ProductBuy } from "@/components/product-buy";
-import { Jersey } from "@/components/jersey";
-
-type Colorway = "beton" | "craie" | "signal";
-
-function colorwayFor(handle: string): Colorway {
-  const h = handle.toLowerCase();
-  if (h.includes("home") || h.includes("beton") || h.includes("béton")) return "beton";
-  if (h.includes("away") || h.includes("craie")) return "craie";
-  return "signal";
-}
+import { PRODUCT_PHOTO } from "@/lib/assets";
 
 const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
 const brandHtml = (html: string) => html.replace(/GRYD/g, "redline26").replace(/Gryd/g, "redline26");
@@ -46,8 +37,6 @@ function displayCopy(product: Product) {
   };
 }
 
-const PHOTO = "/redline26/product-photo.jpg";
-
 const DEMO: Record<string, Product> = {
   "gryd-home-beton": demo("gryd-home-beton", "redline26 Home / Béton", "55.00"),
   "gryd-away-craie": demo("gryd-away-craie", "redline26 Away / Craie", "55.00"),
@@ -59,8 +48,8 @@ function demo(handle: string, title: string, price: string): Product {
     id: handle, handle, title,
     description: "Maillot redline26 imprimé à la demande. Série numérotée.",
     descriptionHtml: "<p>Maillot redline26 imprimé à la demande à Paris. Série limitée numérotée. Coupe unisexe.</p>",
-    featuredImage: { url: PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
-    images: [{ url: PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
+    featuredImage: { url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
+    images: [{ url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },
     options: [{ name: "Taille", values: ["S", "M", "L", "XL"] }],
     variants: ["S", "M", "L", "XL"].map((s) => ({
@@ -83,7 +72,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   if (!product) product = DEMO[handle] ?? null;
   if (!product) notFound();
 
-  const colorway = colorwayFor(product.handle);
   const copy = displayCopy(product);
 
   return (
@@ -93,14 +81,11 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
       <div className="pdp-grid">
         <div className="pdp-visual">
           <span className="pdp-sector">Drop 01 · Pièce originale</span>
-          {product.featuredImage ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={product.featuredImage.url} alt={product.featuredImage.altText ? brandTitle(product.featuredImage.altText) : copy.title} />
-          ) : (
-            <div className="jersey-lg" aria-hidden>
-              <Jersey face="front" colorway={colorway} />
-            </div>
-          )}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={product.featuredImage?.url ?? PRODUCT_PHOTO}
+            alt={product.featuredImage?.altText ? brandTitle(product.featuredImage.altText) : copy.title}
+          />
           <div className="pdp-visual-mark display" aria-hidden>redline26</div>
         </div>
 
