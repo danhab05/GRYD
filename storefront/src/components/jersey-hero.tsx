@@ -107,6 +107,21 @@ export function JerseyHero() {
           scalar: 0.95,
         });
 
+        if (ballRef.current) {
+          gsap.killTweensOf(ballRef.current);
+          gsap.fromTo(
+            ballRef.current,
+            { x: 0, y: 0, scale: 0.25, rotate: 0, autoAlpha: 0 },
+            {
+              keyframes: [
+                { x: 0, y: 0, scale: 0.42, autoAlpha: 1, duration: 0.04 },
+                { x: "16vw", y: "-20vh", scale: 1.08, rotate: 420, autoAlpha: 1, duration: 0.18, ease: "power4.out" },
+                { x: "42vw", y: "-54vh", scale: 0.58, rotate: 980, autoAlpha: 0, duration: 0.28, ease: "power2.in" },
+              ],
+            }
+          );
+        }
+
         if (soundEnabledRef.current && soundRef.current) {
           soundRef.current.stop();
           soundRef.current.play();
@@ -141,8 +156,6 @@ export function JerseyHero() {
         .fromTo(burstRef.current, { scale: 0.35, autoAlpha: 0 }, { scale: 1.65, autoAlpha: 0.9, duration: 0.22 }, 0.72)
         .to(burstRef.current, { scale: 2.1, autoAlpha: 0, duration: 0.2 }, 0.9)
         .fromTo(butRef.current, { scale: 0.62, y: 28, autoAlpha: 0 }, { scale: 1, y: 0, autoAlpha: 1, duration: 0.16 }, 0.73)
-        .fromTo(ballRef.current, { x: 0, y: 0, scale: 0.32, rotate: 0, autoAlpha: 0 }, { x: "34vw", y: "-36vh", scale: 1.1, rotate: 760, autoAlpha: 1, duration: 0.18, ease: "power4.out" }, 0.755)
-        .to(ballRef.current, { x: "48vw", y: "-52vh", scale: 0.62, autoAlpha: 0, duration: 0.16, ease: "power2.in" }, 0.93)
         .to(butRef.current, { scale: 1.18, autoAlpha: 0, duration: 0.28 }, 0.95)
         .to(jerseyRef.current, { rotateY: 206, rotateX: -2, rotateZ: 0, z: 40, scale: 1, duration: 0.28 }, 0.95);
     }, rootRef);
@@ -199,6 +212,7 @@ export function JerseyHero() {
           <div className="jh-burst" ref={burstRef} />
           <div className="jh-but display" ref={butRef}>But.</div>
           <div className="jh-ball" ref={ballRef} aria-hidden>
+            <i />
             <span />
           </div>
         </div>
@@ -370,8 +384,20 @@ export function JerseyHero() {
           border: 2px solid var(--concrete-900);
           box-shadow: 0 0 0 2px rgba(244, 233, 211, 0.2), 0 18px 45px rgba(0, 0, 0, 0.42);
           opacity: 0;
-          overflow: hidden;
+          overflow: visible;
           will-change: transform, opacity;
+        }
+        .jh-ball i {
+          position: absolute;
+          right: 62%;
+          top: 50%;
+          width: 180px;
+          height: 5px;
+          border-radius: 999px;
+          background: linear-gradient(90deg, transparent, rgba(244, 233, 211, 0.9));
+          transform: translateY(-50%);
+          filter: blur(1px);
+          z-index: -1;
         }
         .jh-ball::before,
         .jh-ball::after,
