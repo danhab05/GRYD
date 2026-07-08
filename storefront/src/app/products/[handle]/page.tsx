@@ -24,6 +24,11 @@ const COPY_BY_HANDLE: Record<string, { title: string; html: string }> = {
     html:
       "<p><strong>Drop 01 · Secteur C3.</strong> La pièce la plus frontale du drop : rouge archive, crème papier, lignes nettes et énergie poster. Une silhouette football/streetwear originale, sans référence protégée.</p><p>Impression à la demande, série limitée numérotée, coupe unisexe.</p>",
   },
+  "redline26-keeper-or-nuit": {
+    title: "redline26 Keeper / Or nuit",
+    html:
+      "<p><strong>Drop 01 · Secteur D4.</strong> L'édition gardien : or nuit, coupe technique, énergie poster. Une pièce football/streetwear 100% originale — aucun blason, sponsor ou sélection réelle.</p><p>Impression à la demande, série limitée numérotée, coupe unisexe.</p>",
+  },
 };
 
 function displayCopy(product: Product) {
@@ -39,6 +44,7 @@ const DEMO: Record<string, Product> = {
   "gryd-home-beton": demo("gryd-home-beton", "redline26 Home / Bleu nuit", "55.00"),
   "gryd-away-craie": demo("gryd-away-craie", "redline26 Away / Crème papier", "55.00"),
   "gryd-third-signal": demo("gryd-third-signal", "redline26 Third / Rouge archive", "60.00"),
+  "redline26-keeper-or-nuit": demo("redline26-keeper-or-nuit", "redline26 Keeper / Or nuit", "60.00"),
 };
 
 function demo(handle: string, title: string, price: string): Product {

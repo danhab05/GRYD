@@ -63,20 +63,20 @@ export default function NotreHistoirePage() {
       </section>
 
       <style>{`
-        .story{position:relative;z-index:2;background:#f7f1e7;color:#080a10;min-height:100vh;padding:118px 40px 80px}
+        .story{position:relative;z-index:2;background:#fff;color:#080a10;min-height:100vh;padding:118px 40px 80px}
         .story::before{content:"";position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(8,10,16,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(8,10,16,.055) 1px,transparent 1px);background-size:72px 72px;pointer-events:none}
         .story-hero{max-width:1120px;margin:0 auto 84px;border-bottom:1px solid rgba(8,10,16,.14);padding-bottom:58px}
         .story-kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#b00f17;font-weight:800;margin-bottom:24px}
         .story-hero h1{font-size:clamp(46px,9vw,118px);line-height:.86;max-width:980px;letter-spacing:-.05em;margin-bottom:30px}
         .story-hero>p{font-size:clamp(18px,2.4vw,28px);line-height:1.35;max-width:800px;color:rgba(8,10,16,.68)}
         .story-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(8,10,16,.14);border:1px solid rgba(8,10,16,.14)}
-        .story-grid article{background:#f7f1e7;padding:34px;min-height:360px;display:flex;flex-direction:column}
+        .story-grid article{background:#fff;padding:34px;min-height:360px;display:flex;flex-direction:column}
         .story-grid span{font-size:12px;letter-spacing:.2em;color:#b9964b;font-weight:900;margin-bottom:34px}
         .story-grid h2{font-size:clamp(26px,3vw,42px);line-height:.92;margin-bottom:24px}
         .story-grid p{font-size:15px;line-height:1.75;color:rgba(8,10,16,.64);margin-top:auto}
         .seen{max-width:1120px;margin:90px auto 0;text-align:center;border-top:1px solid rgba(8,10,16,.14);border-bottom:1px solid rgba(8,10,16,.14);padding:54px 0}
         .seen-list{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(8,10,16,.14);margin-top:26px}
-        .seen-list span{background:#fffaf1;padding:24px 12px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:900}
+        .seen-list span{background:#f5f5f3;padding:24px 12px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:900}
         .seen-note{margin-top:20px;font-size:13px;color:rgba(8,10,16,.5)}
         .story-outro{max-width:1120px;margin:70px auto 0;display:flex;align-items:center;justify-content:space-between;gap:24px}
         .story-outro h2{font-size:clamp(34px,6vw,76px);line-height:.9}
