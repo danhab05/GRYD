@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Hero redline26 — vidéo cinématique.
+ * Hero RedLine26 — vidéo cinématique.
  * -----------------------------------
  * La vidéo (public/redline26/hero.mp4) est jouée en plein cadre, en boucle,
  * muette et en autoplay. Elle sert de fond ; par-dessus on pose l'identité

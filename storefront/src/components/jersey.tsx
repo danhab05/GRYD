@@ -1,5 +1,5 @@
 /**
- * Maillot redline26 en SVG — recto (flocage marque) / verso (numéro + nom).
+ * Maillot RedLine26 en SVG — recto (flocage marque) / verso (numéro + nom).
  * Sert de pièce maîtresse animée dans la hero (turntable 3D) ET de visuel de repli
  * sur les cartes produit tant que Printful n'a pas poussé les vraies images.
  */
@@ -21,7 +21,7 @@ export function Jersey({
   face = "front",
   colorway = "signal",
   number = "07",
-  name = "REDLINE26",
+  name = "RedLine26",
   className,
 }: {
   face?: "front" | "back";
@@ -38,7 +38,7 @@ export function Jersey({
       viewBox="0 0 320 380"
       className={className}
       role="img"
-      aria-label={`Maillot redline26 ${colorway} ${face === "back" ? `numéro ${number}` : ""}`}
+      aria-label={`Maillot RedLine26 ${colorway} ${face === "back" ? `numéro ${number}` : ""}`}
       style={{ width: "100%", height: "100%", display: "block" }}
     >
       <defs>
@@ -96,7 +96,7 @@ export function Jersey({
             letterSpacing="3"
             fill={c.ink}
           >
-            {colorway === "archive" ? "REDLINE26" : "REDLINE"}
+            {colorway === "archive" ? "RedLine26" : "RedLine"}
           </text>
           <text
             x="160"
@@ -131,7 +131,7 @@ export function Jersey({
                 letterSpacing="-1"
                 fill={c.ink}
               >
-                REDLINE26
+                RedLine26
               </text>
             </>
           )}

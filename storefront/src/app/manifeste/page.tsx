@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "redline26 — Manifeste",
+  title: "RedLine26 — Manifeste",
   description:
-    "On dessine nos propres lignes. redline26 ne copie aucun club, aucune sélection, aucun blason — zéro copie. Imprimé à la demande à Paris.",
+    "On dessine nos propres lignes. RedLine26 ne copie aucun club, aucune sélection, aucun blason — zéro copie. Imprimé à la demande à Paris.",
 };
 
 const SECTEURS = [
@@ -18,7 +18,7 @@ const SECTEURS = [
     n: "02",
     titre: "Zéro copie",
     corps:
-      "redline26 ne reproduit aucun club, aucune sélection, aucun blason. Nos couleurs, nos numéros, nos lignes. Inventer une équipe qui n'existe que chez nous.",
+      "RedLine26 ne reproduit aucun club, aucune sélection, aucun blason. Nos couleurs, nos numéros, nos lignes. Inventer une équipe qui n'existe que chez nous.",
   },
   {
     n: "03",
@@ -66,7 +66,7 @@ export default function ManifestePage() {
         .mf::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 78% 10%,rgba(225,22,29,.05),transparent 30%);pointer-events:none}
 
         .mf-hero{position:relative;border-bottom:1px solid var(--line);padding-bottom:70px;margin-bottom:20px}
-        .mf-hero::after{content:"redline26";position:absolute;right:0;bottom:-.11em;font-size:clamp(60px,12vw,150px);line-height:.8;font-weight:800;letter-spacing:-.05em;color:rgba(242,240,235,.045);pointer-events:none}
+        .mf-hero::after{content:"RedLine26";position:absolute;right:0;bottom:-.11em;font-size:clamp(60px,12vw,150px);line-height:.8;font-weight:800;letter-spacing:-.05em;color:rgba(242,240,235,.045);pointer-events:none}
         .mf-eyebrow{font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--signal);margin-bottom:34px}
         .mf-title{font-size:clamp(44px,9vw,120px);line-height:.9;letter-spacing:-.02em}
         .mf-title .signal{color:var(--signal)}

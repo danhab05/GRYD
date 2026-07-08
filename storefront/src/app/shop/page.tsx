@@ -5,15 +5,15 @@ import { getAllProducts, type Product } from "@/lib/shopify";
 import { PRODUCT_PHOTO } from "@/lib/assets";
 
 export const metadata: Metadata = {
-  title: "redline26 — Shop",
-  description: "Tous les maillots redline26 : catalogue simple, fond blanc, pièces originales imprimées à la demande.",
+  title: "RedLine26 — Shop",
+  description: "Tous les maillots RedLine26 : catalogue simple, fond blanc, pièces originales imprimées à la demande.",
 };
 
 const DEMO: Product[] = [
-  demo("gryd-home-beton", "redline26 Home / Bleu nuit", "55.00"),
-  demo("gryd-away-craie", "redline26 Away / Crème papier", "55.00"),
-  demo("gryd-third-signal", "redline26 Third / Rouge archive", "60.00"),
-  demo("redline26-keeper-or-nuit", "redline26 Keeper / Or nuit", "60.00"),
+  demo("gryd-home-beton", "RedLine26 Home / Bleu nuit", "55.00"),
+  demo("gryd-away-craie", "RedLine26 Away / Crème papier", "55.00"),
+  demo("gryd-third-signal", "RedLine26 Third / Rouge archive", "60.00"),
+  demo("redline26-keeper-or-nuit", "RedLine26 Keeper / Or nuit", "60.00"),
 ];
 
 function demo(handle: string, title: string, price: string): Product {
@@ -21,8 +21,8 @@ function demo(handle: string, title: string, price: string): Product {
     id: handle,
     handle,
     title,
-    description: "Maillot redline26 original.",
-    descriptionHtml: "<p>Maillot redline26 original.</p>",
+    description: "Maillot RedLine26 original.",
+    descriptionHtml: "<p>Maillot RedLine26 original.</p>",
     featuredImage: { url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
     images: [{ url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },
@@ -34,7 +34,7 @@ function demo(handle: string, title: string, price: string): Product {
 const money = (amount: string, currency = "EUR") =>
   new Intl.NumberFormat("fr-FR", { style: "currency", currency, maximumFractionDigits: 0 }).format(Number(amount));
 
-const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
+const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "RedLine26 ");
 
 function productLabel(handle: string, i: number) {
   if (handle.includes("third")) return "Meilleure vente";

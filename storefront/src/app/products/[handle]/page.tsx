@@ -5,27 +5,27 @@ import { getProductByHandle, type Product } from "@/lib/shopify";
 import { ProductBuy } from "@/components/product-buy";
 import { PRODUCT_PHOTO } from "@/lib/assets";
 
-const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
-const brandHtml = (html: string) => html.replace(/GRYD/g, "redline26").replace(/Gryd/g, "redline26");
+const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "RedLine26 ");
+const brandHtml = (html: string) => html.replace(/GRYD/g, "RedLine26").replace(/Gryd/g, "RedLine26");
 
 const COPY_BY_HANDLE: Record<string, { title: string; html: string }> = {
   "gryd-home-beton": {
-    title: "redline26 Home / Bleu nuit",
+    title: "RedLine26 Home / Bleu nuit",
     html:
-      "<p><strong>Drop 01 · Le maillot fondation.</strong> Bleu nuit, coupe technique, série numérotée. La première ligne de redline26.</p><p>100% original — aucun club, sélection ou blason réel. Imprimé à la demande à Paris.</p>",
+      "<p><strong>Drop 01 · Le maillot fondation.</strong> Bleu nuit, coupe technique, série numérotée. La première ligne de RedLine26.</p><p>100% original — aucun club, sélection ou blason réel. Imprimé à la demande à Paris.</p>",
   },
   "gryd-away-craie": {
-    title: "redline26 Away / Crème papier",
+    title: "RedLine26 Away / Crème papier",
     html:
       "<p><strong>Drop 01 · L'extérieur.</strong> Base crème, détails rouge archive. L'énergie du football, zéro copie.</p><p>Série numérotée, coupe unisexe, imprimée à la demande.</p>",
   },
   "gryd-third-signal": {
-    title: "redline26 Third / Rouge archive",
+    title: "RedLine26 Third / Rouge archive",
     html:
       "<p><strong>Drop 01 · La pièce phare.</strong> Rouge archive, lignes nettes. C'est la ligne qu'on trace, celle qu'on franchit.</p><p>Impression à la demande, série numérotée, coupe unisexe. Aucune référence protégée.</p>",
   },
   "redline26-keeper-or-nuit": {
-    title: "redline26 Keeper / Or nuit",
+    title: "RedLine26 Keeper / Or nuit",
     html:
       "<p><strong>Drop 01 · L'édition gardien.</strong> Or nuit, coupe technique. Le dernier rempart, en 100% original.</p><p>Impression à la demande, série numérotée, coupe unisexe.</p>",
   },
@@ -41,10 +41,10 @@ function displayCopy(product: Product) {
 }
 
 const DEMO: Record<string, Product> = {
-  "gryd-home-beton": demo("gryd-home-beton", "redline26 Home / Bleu nuit", "55.00"),
-  "gryd-away-craie": demo("gryd-away-craie", "redline26 Away / Crème papier", "55.00"),
-  "gryd-third-signal": demo("gryd-third-signal", "redline26 Third / Rouge archive", "60.00"),
-  "redline26-keeper-or-nuit": demo("redline26-keeper-or-nuit", "redline26 Keeper / Or nuit", "60.00"),
+  "gryd-home-beton": demo("gryd-home-beton", "RedLine26 Home / Bleu nuit", "55.00"),
+  "gryd-away-craie": demo("gryd-away-craie", "RedLine26 Away / Crème papier", "55.00"),
+  "gryd-third-signal": demo("gryd-third-signal", "RedLine26 Third / Rouge archive", "60.00"),
+  "redline26-keeper-or-nuit": demo("redline26-keeper-or-nuit", "RedLine26 Keeper / Or nuit", "60.00"),
 };
 
 function demo(handle: string, title: string, price: string): Product {
@@ -52,8 +52,8 @@ function demo(handle: string, title: string, price: string): Product {
     id: handle,
     handle,
     title,
-    description: "Maillot redline26 imprimé à la demande. Série numérotée.",
-    descriptionHtml: "<p>Maillot redline26 imprimé à la demande à Paris. Série limitée numérotée. Coupe unisexe.</p>",
+    description: "Maillot RedLine26 imprimé à la demande. Série numérotée.",
+    descriptionHtml: "<p>Maillot RedLine26 imprimé à la demande à Paris. Série limitée numérotée. Coupe unisexe.</p>",
     featuredImage: { url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
     images: [{ url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },

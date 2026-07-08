@@ -9,7 +9,7 @@ const money = (amount?: string, code = "EUR") =>
     ? new Intl.NumberFormat("fr-FR", { style: "currency", currency: code }).format(Number(amount))
     : "—";
 
-const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
+const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "RedLine26 ");
 
 export function MiniCart() {
   const { cart, isOpen, close, remove, checkout, isLoading } = useCart();
