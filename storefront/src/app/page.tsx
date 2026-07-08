@@ -4,6 +4,8 @@ import { getAllProducts, type Product } from "@/lib/shopify";
 import { JerseyHero } from "@/components/jersey-hero";
 import { Jersey } from "@/components/jersey";
 
+const PHOTO = "/redline26/product-photo.jpg";
+
 /** Données de démo si le token Shopify n'est pas encore branché — le site tourne quand même. */
 const DEMO: Product[] = [
   demo("gryd-home-beton", "redline26 Home / Béton", "55.00", "Secteur A1"),
@@ -18,8 +20,8 @@ function demo(handle: string, title: string, price: string, tag: string): Produc
     title,
     description: tag,
     descriptionHtml: `<p>${tag}</p>`,
-    featuredImage: null,
-    images: [],
+    featuredImage: { url: PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
+    images: [{ url: PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },
     options: [{ name: "Taille", values: ["S", "M", "L", "XL"] }],
     variants: [],
@@ -42,6 +44,7 @@ const money = (a: string, c = "EUR") =>
   new Intl.NumberFormat("fr-FR", { style: "currency", currency: c, maximumFractionDigits: 0 }).format(Number(a));
 
 const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
+
 const SAFE_ASSETS = [
   { src: "/redline26/IMG-20260707-WA0079.jpg", alt: "Illustration football rose et crème" },
   { src: "/redline26/IMG-20260707-WA0080.jpg", alt: "Texture crampon noir et rose" },

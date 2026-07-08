@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: "Tous les maillots redline26 : catalogue simple, fond blanc, pièces originales imprimées à la demande.",
 };
 
+const PHOTO = "/redline26/product-photo.jpg";
+
 const DEMO: Product[] = [
   demo("gryd-home-beton", "redline26 Home / Bleu nuit", "55.00"),
   demo("gryd-away-craie", "redline26 Away / Crème papier", "55.00"),
@@ -22,8 +24,8 @@ function demo(handle: string, title: string, price: string): Product {
     title,
     description: "Maillot redline26 original.",
     descriptionHtml: "<p>Maillot redline26 original.</p>",
-    featuredImage: null,
-    images: [],
+    featuredImage: { url: PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
+    images: [{ url: PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },
     options: [{ name: "Taille", values: ["S", "M", "L", "XL"] }],
     variants: [],

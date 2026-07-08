@@ -46,6 +46,8 @@ function displayCopy(product: Product) {
   };
 }
 
+const PHOTO = "/redline26/product-photo.jpg";
+
 const DEMO: Record<string, Product> = {
   "gryd-home-beton": demo("gryd-home-beton", "redline26 Home / Béton", "55.00"),
   "gryd-away-craie": demo("gryd-away-craie", "redline26 Away / Craie", "55.00"),
@@ -57,7 +59,8 @@ function demo(handle: string, title: string, price: string): Product {
     id: handle, handle, title,
     description: "Maillot redline26 imprimé à la demande. Série numérotée.",
     descriptionHtml: "<p>Maillot redline26 imprimé à la demande à Paris. Série limitée numérotée. Coupe unisexe.</p>",
-    featuredImage: null, images: [],
+    featuredImage: { url: PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
+    images: [{ url: PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },
     options: [{ name: "Taille", values: ["S", "M", "L", "XL"] }],
     variants: ["S", "M", "L", "XL"].map((s) => ({
