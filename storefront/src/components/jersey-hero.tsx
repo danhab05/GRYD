@@ -67,6 +67,7 @@ export function JerseyHero() {
   const flashRef = useRef<HTMLDivElement>(null);
   const burstRef = useRef<HTMLDivElement>(null);
   const butRef = useRef<HTMLDivElement>(null);
+  const ballRef = useRef<HTMLDivElement>(null);
   const topTitleRef = useRef<HTMLHeadingElement>(null);
   const bottomTitleRef = useRef<HTMLHeadingElement>(null);
   const soundRef = useRef<Howl | null>(null);
@@ -91,7 +92,8 @@ export function JerseyHero() {
         transformPerspective: 1400,
         transformStyle: "preserve-3d",
       });
-      gsap.set([flashRef.current, burstRef.current, butRef.current], { autoAlpha: 0 });
+      gsap.set([flashRef.current, burstRef.current, butRef.current, ballRef.current], { autoAlpha: 0 });
+      gsap.set(ballRef.current, { x: 0, y: 0, scale: 0.28, rotate: 0 });
 
       const celebrate = () => {
         confetti({
@@ -139,6 +141,8 @@ export function JerseyHero() {
         .fromTo(burstRef.current, { scale: 0.35, autoAlpha: 0 }, { scale: 1.65, autoAlpha: 0.9, duration: 0.22 }, 0.72)
         .to(burstRef.current, { scale: 2.1, autoAlpha: 0, duration: 0.2 }, 0.9)
         .fromTo(butRef.current, { scale: 0.62, y: 28, autoAlpha: 0 }, { scale: 1, y: 0, autoAlpha: 1, duration: 0.16 }, 0.73)
+        .fromTo(ballRef.current, { x: 0, y: 0, scale: 0.32, rotate: 0, autoAlpha: 0 }, { x: "34vw", y: "-36vh", scale: 1.1, rotate: 760, autoAlpha: 1, duration: 0.18, ease: "power4.out" }, 0.755)
+        .to(ballRef.current, { x: "48vw", y: "-52vh", scale: 0.62, autoAlpha: 0, duration: 0.16, ease: "power2.in" }, 0.93)
         .to(butRef.current, { scale: 1.18, autoAlpha: 0, duration: 0.28 }, 0.95)
         .to(jerseyRef.current, { rotateY: 206, rotateX: -2, rotateZ: 0, z: 40, scale: 1, duration: 0.28 }, 0.95);
     }, rootRef);
@@ -194,11 +198,14 @@ export function JerseyHero() {
         <div className="jh-center">
           <div className="jh-burst" ref={burstRef} />
           <div className="jh-but display" ref={butRef}>But.</div>
+          <div className="jh-ball" ref={ballRef} aria-hidden>
+            <span />
+          </div>
         </div>
       </div>
 
       <div className="jh-foot">
-        <Link href="#drop" className="jh-cta">Voir le drop →</Link>
+        <Link href="/shop" className="jh-cta">Voir les maillots →</Link>
         <button type="button" className="jh-sound" onClick={toggleSound} aria-pressed={soundEnabled}>
           Son stade {soundEnabled ? "on" : "off"}
         </button>
@@ -353,6 +360,48 @@ export function JerseyHero() {
           transform: scaleY(1.1);
           text-shadow: 0 0 60px rgba(228, 255, 58, 0.42);
           opacity: 0;
+        }
+        .jh-ball {
+          position: absolute;
+          width: clamp(28px, 5vw, 76px);
+          height: clamp(28px, 5vw, 76px);
+          border-radius: 50%;
+          background: var(--chalk);
+          border: 2px solid var(--concrete-900);
+          box-shadow: 0 0 0 2px rgba(244, 233, 211, 0.2), 0 18px 45px rgba(0, 0, 0, 0.42);
+          opacity: 0;
+          overflow: hidden;
+          will-change: transform, opacity;
+        }
+        .jh-ball::before,
+        .jh-ball::after,
+        .jh-ball span {
+          content: "";
+          position: absolute;
+          background: var(--concrete-900);
+        }
+        .jh-ball::before {
+          width: 34%;
+          height: 34%;
+          left: 33%;
+          top: 33%;
+          clip-path: polygon(50% 0, 100% 38%, 82% 100%, 18% 100%, 0 38%);
+        }
+        .jh-ball::after {
+          width: 150%;
+          height: 2px;
+          left: -25%;
+          top: 50%;
+          transform: rotate(28deg);
+          opacity: 0.82;
+        }
+        .jh-ball span {
+          width: 150%;
+          height: 2px;
+          left: -25%;
+          top: 50%;
+          transform: rotate(-34deg);
+          opacity: 0.82;
         }
 
         .jh-foot {

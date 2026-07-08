@@ -15,6 +15,8 @@ redline26 est une boutique e-commerce headless pour maillots de foot originaux. 
 ## Fichiers clés
 
 - `storefront/src/app/page.tsx` : home, hero redline26, moodboard images, drop produit, teaser manifeste.
+- `storefront/src/app/shop/page.tsx` : catalogue maillots sur fond blanc avec filtres simples.
+- `storefront/src/app/notre-histoire/page.tsx` : page storytelling et section “Vous nous avez vus sur”.
 - `storefront/src/components/jersey-hero.tsx` : hero cinématique Stack A avec ScrollTrigger, CSS 3D, confettis et son opt-in.
 - `storefront/src/components/jersey.tsx` : maillot SVG recto/verso réutilisé en hero et fallback produit.
 - `storefront/src/components/smooth-scroll.tsx` : Lenis global.
