@@ -101,7 +101,7 @@ export function JerseyHero() {
           gravity: 0.92,
           ticks: 180,
           origin: { x: 0.5, y: 0.47 },
-          colors: ["#E4FF3A", "#F2F0EB", "#16181C"],
+          colors: ["#E1161D", "#F4E4C8", "#0B5D7C", "#B9964B"],
           scalar: 0.95,
         });
 
@@ -176,10 +176,10 @@ export function JerseyHero() {
           <div className="jh-shadow" aria-hidden />
           <div className="jh-jersey-3d" ref={jerseyRef}>
             <div className="jh-face jh-front">
-              <Jersey face="front" colorway="signal" />
+              <Jersey face="front" colorway="archive" />
             </div>
             <div className="jh-face jh-back">
-              <Jersey face="back" colorway="signal" number="07" name="REDLINE26" />
+              <Jersey face="back" colorway="archive" number="26" name="ARCHIVE" />
             </div>
           </div>
         </div>
@@ -226,7 +226,7 @@ export function JerseyHero() {
           position: absolute;
           inset: 10% 12%;
           background:
-            radial-gradient(circle at 50% 42%, rgba(228, 255, 58, 0.12), transparent 30%),
+            radial-gradient(circle at 50% 42%, rgba(11, 93, 124, 0.16), transparent 30%),
             linear-gradient(115deg, transparent 0 42%, rgba(242, 240, 235, 0.07) 42% 43%, transparent 43% 100%);
           filter: blur(0.2px);
           opacity: 0.9;
@@ -274,7 +274,7 @@ export function JerseyHero() {
         .jh-orbit {
           position: absolute;
           inset: 7% -13%;
-          border: 1px solid rgba(228, 255, 58, 0.26);
+          border: 1px solid rgba(244, 228, 200, 0.28);
           border-radius: 50%;
           transform: rotateX(72deg) rotateZ(-8deg);
           opacity: 0.55;
@@ -314,7 +314,7 @@ export function JerseyHero() {
         .jh-flash {
           position: absolute;
           inset: 0;
-          background: radial-gradient(circle at 50% 50%, rgba(228, 255, 58, 0.7), transparent 56%);
+          background: radial-gradient(circle at 50% 50%, rgba(225, 22, 29, 0.58), transparent 56%);
           mix-blend-mode: screen;
           opacity: 0;
         }
