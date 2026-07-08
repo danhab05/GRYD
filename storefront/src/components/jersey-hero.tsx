@@ -25,11 +25,30 @@ export function JerseyHero() {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+    // muted + defaultMuted forcés en JS : sinon certains navigateurs voient la
+    // vidéo comme "non muette" et bloquent l'autoplay.
     v.muted = true;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!reduce) {
-      v.play().catch(() => {});
-    }
+    v.defaultMuted = true;
+
+    const tryPlay = () => {
+      const p = v.play();
+      if (p && typeof p.catch === "function") p.catch(() => {});
+    };
+    tryPlay();
+    v.addEventListener("loadeddata", tryPlay, { once: true });
+    v.addEventListener("canplay", tryPlay, { once: true });
+
+    // Filet de sécurité : si le navigateur bloque quand même, on lance au 1er geste.
+    const onFirst = () => tryPlay();
+    window.addEventListener("pointerdown", onFirst, { once: true });
+    window.addEventListener("touchstart", onFirst, { once: true });
+
+    return () => {
+      v.removeEventListener("loadeddata", tryPlay);
+      v.removeEventListener("canplay", tryPlay);
+      window.removeEventListener("pointerdown", onFirst);
+      window.removeEventListener("touchstart", onFirst);
+    };
   }, []);
 
   const toggleSound = () => {
