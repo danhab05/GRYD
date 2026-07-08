@@ -26,7 +26,7 @@ function demo(handle: string, title: string, price: string): Product {
   };
 }
 
-const LABELS = ["Nouveau", "Meilleure vente", "Édition limitée", "Bientôt", "Drop 01", "Archive"];
+const LABELS = ["Nouveau", "Meilleure vente", "Édition limitée", "Numéroté"];
 const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
 const money = (a: string, c = "EUR") =>
   new Intl.NumberFormat("fr-FR", { style: "currency", currency: c, maximumFractionDigits: 0 }).format(Number(a));
@@ -47,7 +47,7 @@ export default async function HomePage() {
       <div className="marquee" aria-hidden>
         <div className="marquee-track">
           {Array.from({ length: 2 }).map((_, i) => (
-            <span key={i}>Nouveau drop&nbsp;·&nbsp;Fabriqué sur commande&nbsp;·&nbsp;Édition Paris&nbsp;·&nbsp;Séries numérotées&nbsp;·&nbsp;</span>
+            <span key={i}>Cross the line&nbsp;·&nbsp;Édition 2026&nbsp;·&nbsp;Imprimé à la demande&nbsp;·&nbsp;Zéro copie&nbsp;·&nbsp;Made in Paris&nbsp;·&nbsp;</span>
           ))}
         </div>
       </div>
@@ -55,10 +55,10 @@ export default async function HomePage() {
       <section className="drop" id="drop">
         <div className="drop-head">
           <div>
-            <span className="drop-kicker">Drop 01</span>
-            <h2 className="display">Le premier drop.</h2>
+            <span className="drop-kicker">Drop 01 · 2026</span>
+            <h2 className="display">Première ligne.</h2>
           </div>
-          <Link href="/shop" className="drop-shop">Voir tout le shop →</Link>
+          <Link href="/shop" className="drop-shop">Tout le shop →</Link>
         </div>
 
         <div className="grid">
@@ -78,18 +78,18 @@ export default async function HomePage() {
                 <h3>{brandTitle(p.title)}</h3>
                 <span className="card-price">{money(p.priceRange.minVariantPrice.amount, p.priceRange.minVariantPrice.currencyCode)}</span>
               </div>
-              <p className="card-sub">Maillot de foot redline26 · imprimé à la demande</p>
+              <p className="card-sub">Imprimé à la demande · série numérotée</p>
             </Link>
           ))}
         </div>
       </section>
 
       <section className="band">
-        <p className="band-kicker">Le principe</p>
-        <h2 className="display">Chaque maillot est une case de la grille.</h2>
+        <p className="band-kicker">Manifeste</p>
+        <h2 className="display">On dessine nos propres lignes.</h2>
         <p className="band-text">
-          redline26 ne copie aucune équipe. On dessine nos propres couleurs, nos propres secteurs,
-          notre propre ville. Imprimé à la demande à Paris — rien n'est produit tant que vous ne l'avez pas voulu.
+          redline26 ne copie aucun club, aucune sélection, aucun blason. Nos couleurs, nos numéros,
+          nos lignes. Le football réécrit à Paris — imprimé seulement quand tu le commandes.
         </p>
         <Link href="/notre-histoire" className="band-cta">Notre histoire →</Link>
       </section>

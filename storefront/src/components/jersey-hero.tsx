@@ -79,15 +79,15 @@ export function JerseyHero() {
       <div className="jh-grain" aria-hidden />
 
       <div className="jh-overlay">
-        <div className="jh-eyebrow">Paris · Édition sur le bitume</div>
+        <div className="jh-eyebrow">Paris · Édition 2026</div>
         <h1 className="jh-title">
-          <span className="jh-line l1">Porte</span>
-          <span className="jh-line l2 signal">la ville</span>
+          <span className="jh-line l1">Franchis</span>
+          <span className="jh-line l2 signal">la ligne.</span>
         </h1>
-        <p className="jh-tag">Maillots de foot originaux, imprimés à la demande. Séries numérotées.</p>
+        <p className="jh-tag">Maillots de foot originaux, imprimés à la demande. Cross the line.</p>
         <div className="jh-actions">
-          <Link href="#drop" className="jh-cta">Voir le drop →</Link>
-          <Link href="/shop" className="jh-cta ghost">Le shop</Link>
+          <Link href="#drop" className="jh-cta">Le drop →</Link>
+          <Link href="/shop" className="jh-cta ghost">Shop</Link>
         </div>
       </div>
 

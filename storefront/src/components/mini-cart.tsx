@@ -41,8 +41,8 @@ export function MiniCart() {
 
             {lines.length === 0 ? (
               <div className="mc-empty">
-                <p>Votre grille est vide.</p>
-                <Link href="/#drop" onClick={close}>Voir le drop</Link>
+                <p>Ton panier est vide.</p>
+                <Link href="/shop" onClick={close}>Voir le shop</Link>
               </div>
             ) : (
               <>

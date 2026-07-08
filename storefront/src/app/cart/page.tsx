@@ -37,7 +37,7 @@ export default function CartPage() {
 
   return (
     <div className="cart">
-      <Link href="/#drop" className="cart-back">← Continuer sur la grille</Link>
+      <Link href="/shop" className="cart-back">← Continuer les achats</Link>
 
       <header className="cart-head">
         <h1 className="display">Panier</h1>
@@ -50,8 +50,8 @@ export default function CartPage() {
 
       {lines.length === 0 ? (
         <div className="cart-empty">
-          <p>Votre grille est vide.</p>
-          <Link href="/#drop" className="cart-cta">Voir le Drop 01 →</Link>
+          <p>Ton panier est vide.</p>
+          <Link href="/shop" className="cart-cta">Voir le shop →</Link>
         </div>
       ) : (
         <div className="cart-grid">

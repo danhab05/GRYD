@@ -12,22 +12,22 @@ const COPY_BY_HANDLE: Record<string, { title: string; html: string }> = {
   "gryd-home-beton": {
     title: "redline26 Home / Bleu nuit",
     html:
-      "<p><strong>Drop 01 · Secteur A1.</strong> Le maillot fondation de redline26. Bleu nuit, crème papier et touche or : une pièce inspirée des affiches football vintage, pensée pour rester 100% originale.</p><p>Imprimé à la demande. Aucune affiliation à une fédération, un club ou une marque existante.</p>",
+      "<p><strong>Drop 01 · Le maillot fondation.</strong> Bleu nuit, coupe technique, série numérotée. La première ligne de redline26.</p><p>100% original — aucun club, sélection ou blason réel. Imprimé à la demande à Paris.</p>",
   },
   "gryd-away-craie": {
     title: "redline26 Away / Crème papier",
     html:
-      "<p><strong>Drop 01 · Secteur B2.</strong> Une base crème, des détails rouge archive et une lecture plus lifestyle. Le maillot garde l'énergie du football sans reprendre de blason, sponsor ou équipe réelle.</p><p>Série numérotée, coupe unisexe, imprimée à la demande.</p>",
+      "<p><strong>Drop 01 · L'extérieur.</strong> Base crème, détails rouge archive. L'énergie du football, zéro copie.</p><p>Série numérotée, coupe unisexe, imprimée à la demande.</p>",
   },
   "gryd-third-signal": {
     title: "redline26 Third / Rouge archive",
     html:
-      "<p><strong>Drop 01 · Secteur C3.</strong> La pièce la plus frontale du drop : rouge archive, crème papier, lignes nettes et énergie poster. Une silhouette football/streetwear originale, sans référence protégée.</p><p>Impression à la demande, série limitée numérotée, coupe unisexe.</p>",
+      "<p><strong>Drop 01 · La pièce phare.</strong> Rouge archive, lignes nettes. C'est la ligne qu'on trace, celle qu'on franchit.</p><p>Impression à la demande, série numérotée, coupe unisexe. Aucune référence protégée.</p>",
   },
   "redline26-keeper-or-nuit": {
     title: "redline26 Keeper / Or nuit",
     html:
-      "<p><strong>Drop 01 · Secteur D4.</strong> L'édition gardien : or nuit, coupe technique, énergie poster. Une pièce football/streetwear 100% originale — aucun blason, sponsor ou sélection réelle.</p><p>Impression à la demande, série limitée numérotée, coupe unisexe.</p>",
+      "<p><strong>Drop 01 · L'édition gardien.</strong> Or nuit, coupe technique. Le dernier rempart, en 100% original.</p><p>Impression à la demande, série numérotée, coupe unisexe.</p>",
   },
 };
 
@@ -94,7 +94,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
         </div>
 
         <div className="pdp-info">
-          <span className="pdp-kicker">Drop 01 · Pièce originale</span>
+          <span className="pdp-kicker">Drop 01 · Édition 2026</span>
           <h1 className="display">{copy.title}</h1>
           <div className="pdp-desc" dangerouslySetInnerHTML={{ __html: copy.html }} />
           <ProductBuy product={product} />
