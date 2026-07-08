@@ -92,6 +92,7 @@ export default async function HomePage() {
         <div className="drop-head">
           <h2 className="display">Le Drop 01</h2>
           <p>Grille complète<br />{products.length} pièces · Paris</p>
+          <Link href="/shop" className="drop-shop">Shop complet →</Link>
         </div>
 
         <div className="products">
@@ -128,7 +129,7 @@ export default async function HomePage() {
           redline26 ne copie aucune équipe. On dessine nos propres couleurs, nos propres secteurs,
           notre propre ville. Imprimé à la demande à Paris — rien n'est produit tant que vous ne l'avez pas voulu.
         </p>
-        <Link href="/manifeste" className="teaser-cta">Lire le manifeste →</Link>
+        <Link href="/notre-histoire" className="teaser-cta">Lire notre histoire →</Link>
       </section>
 
       <footer className="foot">
@@ -162,9 +163,11 @@ function HomeStyles() {
       .mood-card figcaption{position:absolute;left:22px;bottom:22px;z-index:2;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--chalk);border:1px solid rgba(244,233,211,.22);background:rgba(7,10,18,.42);padding:8px 12px}
 
       .drop{position:relative;z-index:2;padding:120px 40px}
-      .drop-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px}
+      .drop-head{display:grid;grid-template-columns:1fr auto auto;gap:24px;justify-content:space-between;align-items:flex-end;margin-bottom:60px}
       .drop-head h2{font-size:clamp(32px,6vw,72px)}
       .drop-head p{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.5;text-align:right;line-height:1.8}
+      .drop-shop{border:1px solid var(--line);border-radius:999px;padding:12px 18px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:900;color:var(--chalk);white-space:nowrap}
+      .drop-shop:hover{background:var(--chalk);color:var(--concrete-900)}
       .products{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
       .card{position:relative;background:var(--concrete-900);aspect-ratio:3/4;overflow:hidden;display:flex;align-items:flex-end;padding:26px}
       .card-visual{position:absolute;inset:0;background:radial-gradient(circle at 50% 38%,rgba(185,150,75,.2),transparent 26%),radial-gradient(circle at 50% 38%,var(--concrete-700),var(--concrete-900));transition:transform .8s cubic-bezier(.16,1,.3,1)}
@@ -185,7 +188,7 @@ function HomeStyles() {
       .foot{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:40px;border-top:1px solid var(--line);font-size:12px;letter-spacing:.1em;opacity:.6}
       .foot .logo{font-size:18px;letter-spacing:.24em;opacity:1}
 
-      @media(max-width:820px){.mood{grid-template-columns:1fr}.mood-copy{min-height:auto;padding:62px 22px}.mood-grid{grid-template-columns:1fr}.mood-card{min-height:430px}.products{grid-template-columns:1fr 1fr}.drop,.manifeste-teaser{padding-left:22px;padding-right:22px}}
+      @media(max-width:820px){.mood{grid-template-columns:1fr}.mood-copy{min-height:auto;padding:62px 22px}.mood-grid{grid-template-columns:1fr}.mood-card{min-height:430px}.drop-head{grid-template-columns:1fr;align-items:start}.drop-head p{text-align:left}.products{grid-template-columns:1fr 1fr}.drop,.manifeste-teaser{padding-left:22px;padding-right:22px}}
       @media(max-width:520px){.products{grid-template-columns:1fr}}
     `}</style>
   );
