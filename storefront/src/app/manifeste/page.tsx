@@ -4,33 +4,33 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "redline26 — Manifeste",
   description:
-    "Chaque maillot est une case de la grille. redline26 ne copie aucune équipe : nos propres couleurs, nos propres secteurs, notre propre ville. Imprimé à la demande à Paris.",
+    "On dessine nos propres lignes. redline26 ne copie aucun club, aucune sélection, aucun blason — zéro copie. Imprimé à la demande à Paris.",
 };
 
 const SECTEURS = [
   {
     n: "01",
-    titre: "La ville est une grille",
+    titre: "La ligne rouge",
     corps:
-      "Paris se lit comme un plan : des lignes, des secteurs, des cases. On a pris ce maillage comme trame de départ. Chaque maillot occupe une case — un secteur, une couleur, un numéro. Assemblez-les et vous recomposez la grille.",
+      "Le nom, c'est le concept. La ligne rouge, c'est celle qu'on trace nous-mêmes — pas celle des autres. On l'invente, on la franchit.",
   },
   {
     n: "02",
-    titre: "Aucune copie, jamais",
+    titre: "Zéro copie",
     corps:
-      "redline26 ne reproduit aucun club, aucune sélection, aucun blason existant. Zéro affiliation. On dessine nos propres couleurs, nos propres armoiries, notre propre terrain. C'est une contrainte, et c'est surtout le sujet : inventer une équipe qui n'existe que sur le bitume.",
+      "redline26 ne reproduit aucun club, aucune sélection, aucun blason. Nos couleurs, nos numéros, nos lignes. Inventer une équipe qui n'existe que chez nous.",
   },
   {
     n: "03",
-    titre: "Rien n'est produit sans vous",
+    titre: "Rien sans toi",
     corps:
-      "Impression à la demande. Aucune pièce n'existe tant que vous ne l'avez pas commandée — pas de stock mort, pas de surproduction. Vous commandez une case, on l'imprime, on vous l'envoie. Séries limitées, numérotées.",
+      "Impression à la demande. Aucune pièce n'existe tant que tu ne l'as pas commandée — pas de stock mort. Tu commandes, on imprime, on t'envoie. Séries numérotées.",
   },
   {
     n: "04",
     titre: "Édité à Paris",
     corps:
-      "Streetwear parisien, coupe technique unisexe. Le maillot sort du terrain pour entrer dans la rue — porté comme une pièce, pas comme un déguisement. Porte la ville.",
+      "Football et streetwear, coupe unisexe. Le maillot sort du terrain pour entrer dans la rue. Cross the line.",
   },
 ];
 
@@ -38,9 +38,9 @@ export default function ManifestePage() {
   return (
     <div className="mf">
       <header className="mf-hero">
-        <div className="mf-eyebrow">Manifeste · Édition Paris</div>
+        <div className="mf-eyebrow">Manifeste · Édition 2026</div>
         <h1 className="display mf-title">
-          Chaque maillot<br />est une case<br /><span className="signal">de la grille.</span>
+          On dessine<br />nos propres<br /><span className="signal">lignes.</span>
         </h1>
       </header>
 
@@ -57,7 +57,7 @@ export default function ManifestePage() {
       </section>
 
       <section className="mf-outro">
-        <p className="display">Composez votre grille.</p>
+        <p className="display">Franchis la ligne.</p>
         <Link href="/#drop" className="mf-cta">Voir le Drop 01 →</Link>
       </section>
 

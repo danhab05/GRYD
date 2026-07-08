@@ -13,11 +13,10 @@ export default function NotreHistoirePage() {
     <div className="story">
       <section className="story-hero">
         <p className="story-kicker">Notre histoire</p>
-        <h1 className="display">Une marque née entre le terrain et la rue.</h1>
+        <h1 className="display">Née sur la ligne rouge.</h1>
         <p>
-          redline26 part d'une idée simple : créer des maillots qui ont l'énergie du foot,
-          mais qui ne copient aucune équipe. Des pièces originales, pensées comme des affiches
-          que vous pouvez porter.
+          redline26 dessine des maillots de foot 100% originaux : l'énergie du jeu, zéro copie.
+          Des pièces pensées comme des affiches, imprimées à Paris — seulement quand tu les commandes.
         </p>
       </section>
 
@@ -26,25 +25,24 @@ export default function NotreHistoirePage() {
           <span>01</span>
           <h2 className="display">Le déclic</h2>
           <p>
-            On voulait retrouver l'émotion des grands soirs sans reprendre les codes protégés :
-            pas de blason réel, pas de sponsor, pas de sélection. Juste une tension graphique,
-            des numéros, des couleurs, et une vraie silhouette streetwear.
+            On voulait l'émotion des grands soirs sans rien copier : pas de blason réel,
+            pas de sponsor, pas de sélection. Juste des lignes, des numéros, des couleurs à nous.
           </p>
         </article>
         <article>
           <span>02</span>
-          <h2 className="display">Le style</h2>
+          <h2 className="display">La ligne</h2>
           <p>
-            Crème papier, rouge archive, bleu nuit, touches or. redline26 mélange poster vintage,
-            textile de stade et bitume parisien. Chaque drop raconte un secteur de la ville.
+            Rouge archive, bleu nuit, crème papier. redline26 tire une ligne entre l'affiche
+            de match vintage et le streetwear parisien.
           </p>
         </article>
         <article>
           <span>03</span>
           <h2 className="display">La méthode</h2>
           <p>
-            On produit à la demande. Pas de stock mort, pas de faux volume. Vous commandez,
-            on imprime, puis la pièce rejoint votre grille.
+            On produit à la demande. Pas de stock mort, pas de faux volume. Tu commandes,
+            on imprime, la pièce part.
           </p>
         </article>
       </section>
@@ -58,7 +56,7 @@ export default function NotreHistoirePage() {
       </section>
 
       <section className="story-outro">
-        <h2 className="display">La suite se porte.</h2>
+        <h2 className="display">La suite se joue.</h2>
         <Link href="/shop">Voir les maillots →</Link>
       </section>
 

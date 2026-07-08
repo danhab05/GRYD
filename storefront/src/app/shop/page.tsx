@@ -54,7 +54,7 @@ export default async function ShopPage() {
   return (
     <div className="shop">
       <header className="shop-head">
-        <h1>Maillots redline26 ({products.length})</h1>
+        <h1>Tous les maillots ({products.length})</h1>
         <Link href="/notre-histoire">Notre histoire</Link>
       </header>
 
@@ -83,7 +83,7 @@ export default async function ShopPage() {
             </div>
             <p className="label">{productLabel(product.handle, i)}</p>
             <h2>{brandTitle(product.title)}</h2>
-            <p className="desc">Maillot de foot redline26 original pour adulte</p>
+            <p className="desc">Original · imprimé à la demande</p>
             <p className="price">{money(product.priceRange.minVariantPrice.amount, product.priceRange.minVariantPrice.currencyCode)}</p>
           </Link>
         ))}
