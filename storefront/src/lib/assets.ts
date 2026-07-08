@@ -2,7 +2,7 @@
  * Visuel produit affiché partout (hero animée, shop, fiches, cartes).
  *
  * ⚠️ PLACEHOLDER TEMPORAIRE — cette image est un visuel à remplacer par un
- * design redline26 100 % ORIGINAL (ton artwork / un mockup Printful de TON
+ * design RedLine26 100 % ORIGINAL (ton artwork / un mockup Printful de TON
  * t-shirt) AVANT toute connexion Printful ou mise en vente publique.
  * L'image actuelle reprend une identité d'équipe existante → risque de ban
  * Printful/Shopify + juridique. Voir RECAP.md.

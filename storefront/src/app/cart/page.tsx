@@ -23,7 +23,7 @@ function colorwayFor(title: string, i: number): Colorway {
   return (["beton", "craie", "signal"] as Colorway[])[i % 3];
 }
 
-const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
+const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "RedLine26 ");
 
 const money = (amount?: string, code = "EUR") =>
   amount

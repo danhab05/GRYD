@@ -6,11 +6,11 @@ import { MiniCart } from "@/components/mini-cart";
 import { SmoothScroll } from "@/components/smooth-scroll";
 
 export const metadata: Metadata = {
-  title: "redline26 — Franchis la ligne",
+  title: "RedLine26 — Franchis la ligne",
   description:
     "Maillots de foot 100% originaux, imprimés à la demande à Paris. Séries numérotées, zéro copie. Cross the line.",
   openGraph: {
-    title: "redline26 — Franchis la ligne",
+    title: "RedLine26 — Franchis la ligne",
     description: "Maillots de foot originaux, édition 2026. Zéro copie. Cross the line.",
     type: "website",
   },

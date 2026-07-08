@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "redline26 — Notre histoire",
-  description: "L'histoire redline26 : football, rue, affiches vintage et maillots originaux imprimés à la demande.",
+  title: "RedLine26 — Notre histoire",
+  description: "L'histoire RedLine26 : football, rue, affiches vintage et maillots originaux imprimés à la demande.",
 };
 
 const PRESS = ["TikTok", "Instagram", "Paris", "Le bitume"];
@@ -15,7 +15,7 @@ export default function NotreHistoirePage() {
         <p className="story-kicker">Notre histoire</p>
         <h1 className="display">Née sur la ligne rouge.</h1>
         <p>
-          redline26 dessine des maillots de foot 100% originaux : l'énergie du jeu, zéro copie.
+          RedLine26 dessine des maillots de foot 100% originaux : l'énergie du jeu, zéro copie.
           Des pièces pensées comme des affiches, imprimées à Paris — seulement quand tu les commandes.
         </p>
       </section>
@@ -33,7 +33,7 @@ export default function NotreHistoirePage() {
           <span>02</span>
           <h2 className="display">La ligne</h2>
           <p>
-            Rouge archive, bleu nuit, crème papier. redline26 tire une ligne entre l'affiche
+            Rouge archive, bleu nuit, crème papier. RedLine26 tire une ligne entre l'affiche
             de match vintage et le streetwear parisien.
           </p>
         </article>

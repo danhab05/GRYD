@@ -6,9 +6,9 @@ import { PRODUCT_PHOTO } from "@/lib/assets";
 
 /** Données de démo si le token Shopify n'est pas encore branché — le site tourne quand même. */
 const DEMO: Product[] = [
-  demo("gryd-home-beton", "redline26 Home / Bleu nuit", "55.00"),
-  demo("gryd-away-craie", "redline26 Away / Crème papier", "55.00"),
-  demo("gryd-third-signal", "redline26 Third / Rouge archive", "60.00"),
+  demo("gryd-home-beton", "RedLine26 Home / Bleu nuit", "55.00"),
+  demo("gryd-away-craie", "RedLine26 Away / Crème papier", "55.00"),
+  demo("gryd-third-signal", "RedLine26 Third / Rouge archive", "60.00"),
 ];
 
 function demo(handle: string, title: string, price: string): Product {
@@ -16,8 +16,8 @@ function demo(handle: string, title: string, price: string): Product {
     id: handle,
     handle,
     title,
-    description: "Maillot redline26 original.",
-    descriptionHtml: "<p>Maillot redline26 original.</p>",
+    description: "Maillot RedLine26 original.",
+    descriptionHtml: "<p>Maillot RedLine26 original.</p>",
     featuredImage: { url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
     images: [{ url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },
@@ -27,7 +27,7 @@ function demo(handle: string, title: string, price: string): Product {
 }
 
 const LABELS = ["Nouveau", "Meilleure vente", "Édition limitée", "Numéroté"];
-const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "redline26 ");
+const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "RedLine26 ");
 const money = (a: string, c = "EUR") =>
   new Intl.NumberFormat("fr-FR", { style: "currency", currency: c, maximumFractionDigits: 0 }).format(Number(a));
 
@@ -88,14 +88,14 @@ export default async function HomePage() {
         <p className="band-kicker">Manifeste</p>
         <h2 className="display">On dessine nos propres lignes.</h2>
         <p className="band-text">
-          redline26 ne copie aucun club, aucune sélection, aucun blason. Nos couleurs, nos numéros,
+          RedLine26 ne copie aucun club, aucune sélection, aucun blason. Nos couleurs, nos numéros,
           nos lignes. Le football réécrit à Paris — imprimé seulement quand tu le commandes.
         </p>
         <Link href="/notre-histoire" className="band-cta">Notre histoire →</Link>
       </section>
 
       <footer className="foot">
-        <span className="logo display">redline26</span>
+        <span className="logo display">RedLine26</span>
         <div className="foot-links">
           <Link href="/shop">Shop</Link>
           <Link href="/notre-histoire">Notre histoire</Link>
