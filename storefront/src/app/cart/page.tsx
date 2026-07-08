@@ -160,9 +160,7 @@ export default function CartPage() {
           position: fixed;
           inset: 0;
           z-index: -1;
-          background:
-            radial-gradient(circle at 84% 18%, rgba(228, 255, 58, 0.08), transparent 28%),
-            linear-gradient(120deg, transparent 0 64%, rgba(242, 240, 235, 0.035) 64% 65%, transparent 65%);
+          background: radial-gradient(circle at 84% 10%, rgba(225, 22, 29, 0.04), transparent 30%);
           pointer-events: none;
         }
         .cart-back {
@@ -203,7 +201,8 @@ export default function CartPage() {
           gap: 24px;
           padding: 58px;
           border: 1px solid var(--line);
-          background: linear-gradient(135deg, rgba(22, 24, 28, 0.92), rgba(10, 11, 13, 0.7));
+          border-radius: 14px;
+          background: var(--wash);
         }
         .cart-empty p {
           font-size: 18px;
@@ -352,9 +351,10 @@ export default function CartPage() {
           position: sticky;
           top: 110px;
           border: 1px solid var(--line);
-          background: linear-gradient(180deg, rgba(22, 24, 28, 0.96), rgba(10, 11, 13, 0.96));
+          border-radius: 14px;
+          background: var(--wash);
           padding: 30px;
-          box-shadow: 0 28px 80px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 20px 50px rgba(11, 11, 13, 0.08);
         }
         .sum-row {
           display: flex;

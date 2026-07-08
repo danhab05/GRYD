@@ -63,7 +63,7 @@ export default function ManifestePage() {
 
       <style>{`
         .mf{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:140px 40px 100px}
-        .mf::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 78% 12%,rgba(228,255,58,.09),transparent 26%),linear-gradient(110deg,transparent 0 48%,rgba(242,240,235,.04) 48% 49%,transparent 49%);pointer-events:none}
+        .mf::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 78% 10%,rgba(225,22,29,.05),transparent 30%);pointer-events:none}
 
         .mf-hero{position:relative;border-bottom:1px solid var(--line);padding-bottom:70px;margin-bottom:20px}
         .mf-hero::after{content:"redline26";position:absolute;right:0;bottom:-.11em;font-size:clamp(60px,12vw,150px);line-height:.8;font-weight:800;letter-spacing:-.05em;color:rgba(242,240,235,.045);pointer-events:none}
@@ -75,7 +75,7 @@ export default function ManifestePage() {
         .mf-secteur{position:relative;display:grid;grid-template-columns:140px 1fr;gap:40px;padding:56px 0;border-bottom:1px solid var(--line);align-items:start}
         .mf-secteur::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--signal);transition:width .3s}
         .mf-secteur:hover::before{width:3px}
-        .mf-n{font-size:clamp(40px,6vw,80px);color:rgba(228,255,58,.2);line-height:1;letter-spacing:0}
+        .mf-n{font-size:clamp(40px,6vw,80px);color:rgba(225,22,29,.35);line-height:1;letter-spacing:0}
         .mf-secteur-body h2{font-size:clamp(24px,3.4vw,40px);margin-bottom:20px;line-height:1}
         .mf-secteur-body p{font-size:16px;line-height:1.85;opacity:.62;max-width:620px}
 
