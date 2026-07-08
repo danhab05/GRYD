@@ -64,6 +64,7 @@ export function JerseyHero() {
   const reduce = useReducedMotion();
   const rootRef = useRef<HTMLElement>(null);
   const jerseyRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
   const flashRef = useRef<HTMLDivElement>(null);
   const burstRef = useRef<HTMLDivElement>(null);
   const butRef = useRef<HTMLDivElement>(null);
@@ -93,6 +94,9 @@ export function JerseyHero() {
         transformStyle: "preserve-3d",
       });
       gsap.set([flashRef.current, burstRef.current, butRef.current, ballRef.current], { autoAlpha: 0 });
+      if (bgRef.current) {
+        gsap.set(bgRef.current, { scale: 1.15, autoAlpha: 0.18 });
+      }
       gsap.set(ballRef.current, { x: 0, y: 0, scale: 0.28, rotate: 0 });
 
       const celebrate = () => {
@@ -151,6 +155,7 @@ export function JerseyHero() {
       tl.to(jerseyRef.current, { rotateY: 178, rotateX: -6, rotateZ: 2, z: 130, scale: 1.12, duration: 0.72 })
         .to(topTitleRef.current, { xPercent: -8, autoAlpha: 0.34, duration: 0.72 }, 0)
         .to(bottomTitleRef.current, { xPercent: 7, autoAlpha: 0.9, duration: 0.72 }, 0)
+        .to(bgRef.current, { scale: 1, autoAlpha: 0.06, duration: 0.72 }, 0)
         .to(flashRef.current, { autoAlpha: 0.88, duration: 0.06 }, 0.72)
         .to(flashRef.current, { autoAlpha: 0, duration: 0.2 }, 0.8)
         .fromTo(burstRef.current, { scale: 0.35, autoAlpha: 0 }, { scale: 1.65, autoAlpha: 0.9, duration: 0.22 }, 0.72)
@@ -205,6 +210,8 @@ export function JerseyHero() {
           <motion.h1 ref={bottomTitleRef} className="jh-title display signal" {...reveal(0.35)}>La ville</motion.h1>
         </span>
       </div>
+
+      <div className="jh-bg" ref={bgRef} aria-hidden />
 
       <div className="jh-celebrate" aria-hidden>
         <div className="jh-flash" ref={flashRef} />
@@ -261,6 +268,16 @@ export function JerseyHero() {
           text-transform: uppercase;
           color: var(--signal);
           z-index: 4;
+        }
+        .jh-bg {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: url("/redline26/product-photo.jpg") center 30% / cover no-repeat;
+          opacity: 0;
+          pointer-events: none;
+          will-change: transform, opacity;
+          filter: saturate(0.7) contrast(1.1) brightness(0.85);
         }
 
         .jh-stage {
