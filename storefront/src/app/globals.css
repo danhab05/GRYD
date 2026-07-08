@@ -1,27 +1,40 @@
 :root{
-  --concrete-900:#070A12;
-  --concrete-800:#101827;
-  --concrete-700:#1B2A3E;
-  --chalk:#F4E9D3;
-  --signal:#E1161D;
-  --gold:#B9964B;
-  --line:rgba(244,233,211,.14);
+  /* Thème clair premium redline26 — fond blanc */
+  --paper:#FFFFFF;      /* fond principal */
+  --surface:#FFFFFF;    /* cartes, shop */
+  --wash:#F5F5F3;       /* bandes/sections alternées */
+  --ink:#0B0B0D;        /* texte */
+  --muted:#6C6C70;      /* texte secondaire */
+  --line:rgba(11,11,13,.12);
+  --line-soft:rgba(11,11,13,.07);
+  --signal:#E1161D;     /* rouge accent */
+  --signal-ink:#B00F17;
+  --navy:#12324A;
+  --gold:#9A7B34;
+
+  /* alias rétro-compat (anciennes pages non refondues) */
+  --concrete-900:var(--paper);
+  --concrete-800:var(--surface);
+  --concrete-700:#EFEFEC;
+  --chalk:var(--ink);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  background:var(--concrete-900);
-  color:var(--chalk);
-  font-family:"Helvetica Neue",Arial,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Helvetica Neue","Segoe UI",Arial,sans-serif;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
-::selection{background:var(--signal);color:var(--concrete-900)}
+img{max-width:100%}
+::selection{background:var(--signal);color:#fff}
 
-/* Lenis (scroll fluide) — Lenis pilote le scroll, on lui laisse la main */
+/* Lenis (scroll fluide) */
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 .lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
@@ -31,32 +44,41 @@ html.lenis,html.lenis body{height:auto}
   *{animation:none!important;transition:none!important}
 }
 
-/* Grille signature — trame fixe qui traverse tout le site */
+/* Trame signature — ultra discrète, clean */
 .grid-overlay{
   position:fixed;inset:0;z-index:1;pointer-events:none;
   background-image:
-    linear-gradient(var(--line) 1px,transparent 1px),
-    linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:80px 80px;
-  mask-image:radial-gradient(ellipse 120% 80% at 50% 20%,#000 40%,transparent 100%);
+    linear-gradient(var(--line-soft) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+  background-size:96px 96px;
+  mask-image:radial-gradient(ellipse 130% 90% at 50% 0%,#000 30%,transparent 90%);
+  opacity:.6;
 }
 
-/* Nav commune */
+/* Nav claire, épurée */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:50;
   display:flex;align-items:center;justify-content:space-between;
-  padding:22px 40px;mix-blend-mode:difference;
+  padding:16px 32px;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid var(--line-soft);
 }
-.nav .logo{font-weight:800;letter-spacing:.24em;font-size:20px}
-.nav-links{display:flex;gap:34px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
-.nav-links a{transition:opacity .3s}
-.nav-links a:hover{opacity:.5}
-.cart-btn{font-size:12px;letter-spacing:.18em;background:none;border:none;color:inherit}
+.nav .logo{font-weight:900;letter-spacing:-.01em;font-size:22px;color:var(--ink)}
+.nav-links{display:flex;gap:30px;font-size:14px;font-weight:700;color:var(--ink)}
+.nav-links a{position:relative;transition:color .2s}
+.nav-links a:hover{color:var(--signal)}
+.cart-btn{
+  font-size:13px;font-weight:800;letter-spacing:.02em;
+  background:var(--ink);color:#fff;border:none;border-radius:999px;
+  padding:10px 18px;transition:background .2s,transform .2s;
+}
+.cart-btn:hover{background:var(--signal);transform:translateY(-1px)}
 
-/* Utilitaires titres */
-.display{font-weight:800;text-transform:uppercase;letter-spacing:-.01em}
+/* Utilitaire titre condensé massif */
+.display{font-weight:900;letter-spacing:-.03em;line-height:.9}
 
 @media(max-width:820px){
   .nav-links{display:none}
-  .nav{padding:18px 22px}
+  .nav{padding:14px 18px}
 }
