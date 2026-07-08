@@ -13,6 +13,7 @@ const DEMO: Product[] = [
   demo("gryd-home-beton", "redline26 Home / Bleu nuit", "55.00"),
   demo("gryd-away-craie", "redline26 Away / Crème papier", "55.00"),
   demo("gryd-third-signal", "redline26 Third / Rouge archive", "60.00"),
+  demo("redline26-keeper-or-nuit", "redline26 Keeper / Or nuit", "60.00"),
 ];
 
 function demo(handle: string, title: string, price: string): Product {

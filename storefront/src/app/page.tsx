@@ -62,7 +62,7 @@ export default async function HomePage() {
         </div>
 
         <div className="grid">
-          {products.map((p, i) => (
+          {products.slice(0, 3).map((p, i) => (
             <Link href={`/products/${p.handle}`} key={p.id} className="card">
               <div className="card-visual">
                 <Image
