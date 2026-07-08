@@ -2,9 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllProducts, type Product } from "@/lib/shopify";
 import { JerseyHero } from "@/components/jersey-hero";
-import { Jersey } from "@/components/jersey";
-
-const PHOTO = "/redline26/product-photo.jpg";
+import { PRODUCT_PHOTO } from "@/lib/assets";
 
 /** Données de démo si le token Shopify n'est pas encore branché — le site tourne quand même. */
 const DEMO: Product[] = [
@@ -20,8 +18,8 @@ function demo(handle: string, title: string, price: string, tag: string): Produc
     title,
     description: tag,
     descriptionHtml: `<p>${tag}</p>`,
-    featuredImage: { url: PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
-    images: [{ url: PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
+    featuredImage: { url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
+    images: [{ url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },
     options: [{ name: "Taille", values: ["S", "M", "L", "XL"] }],
     variants: [],
@@ -29,16 +27,6 @@ function demo(handle: string, title: string, price: string, tag: string): Produc
 }
 
 const SECTORS = ["Secteur A1", "Secteur B2", "Secteur C3", "Secteur D4", "Secteur E5", "Secteur F6"];
-const NUMBERS = ["07", "10", "09", "11", "04", "08"];
-
-type Colorway = "beton" | "craie" | "signal";
-function colorwayFor(handle: string, i: number): Colorway {
-  const h = handle.toLowerCase();
-  if (h.includes("home") || h.includes("beton") || h.includes("béton")) return "beton";
-  if (h.includes("away") || h.includes("craie")) return "craie";
-  if (h.includes("third") || h.includes("signal")) return "signal";
-  return (["beton", "craie", "signal"] as Colorway[])[i % 3];
-}
 
 const money = (a: string, c = "EUR") =>
   new Intl.NumberFormat("fr-FR", { style: "currency", currency: c, maximumFractionDigits: 0 }).format(Number(a));
@@ -102,19 +90,13 @@ export default async function HomePage() {
           {products.map((p, i) => (
             <Link href={`/products/${p.handle}`} key={p.id} className="card">
               <div className="card-visual">
-                {p.featuredImage ? (
-                  <Image
-                    src={p.featuredImage.url}
-                    alt={p.featuredImage.altText ? brandTitle(p.featuredImage.altText) : brandTitle(p.title)}
-                    fill
-                    sizes="(max-width:820px) 50vw, 33vw"
-                    style={{ objectFit: "cover" }}
-                  />
-                ) : (
-                  <div className="card-jersey">
-                    <Jersey face="front" colorway={colorwayFor(p.handle, i)} number={NUMBERS[i % NUMBERS.length]} />
-                  </div>
-                )}
+                <Image
+                  src={p.featuredImage?.url ?? PRODUCT_PHOTO}
+                  alt={p.featuredImage?.altText ? brandTitle(p.featuredImage.altText) : brandTitle(p.title)}
+                  fill
+                  sizes="(max-width:820px) 50vw, 33vw"
+                  style={{ objectFit: "cover" }}
+                />
               </div>
               <span className="card-tag">{SECTORS[i % SECTORS.length]}</span>
               <div className="card-label">
