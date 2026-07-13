@@ -38,7 +38,7 @@ export function Jersey({
       viewBox="0 0 320 380"
       className={className}
       role="img"
-      aria-label={`Maillot RedLine26 ${colorway} ${face === "back" ? `numéro ${number}` : ""}`}
+      aria-label={`T-shirt RedLine26 ${colorway} ${face === "back" ? `numéro ${number}` : ""}`}
       style={{ width: "100%", height: "100%", display: "block" }}
     >
       <defs>

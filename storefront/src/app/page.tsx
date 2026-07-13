@@ -17,10 +17,10 @@ function demo(handle: string, title: string, price: string): Product {
     id: handle,
     handle,
     title,
-    description: "Maillot RedLine26 original.",
-    descriptionHtml: "<p>Maillot RedLine26 original.</p>",
-    featuredImage: { url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
-    images: [{ url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
+    description: "T-shirt custom RedLine26.",
+    descriptionHtml: "<p>T-shirt custom RedLine26.</p>",
+    featuredImage: { url: PRODUCT_PHOTO, altText: `T-shirt ${title}`, width: 1024, height: 1024 },
+    images: [{ url: PRODUCT_PHOTO, altText: `T-shirt ${title}`, width: 1024, height: 1024 }],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },
     options: [{ name: "Taille", values: ["S", "M", "L", "XL"] }],
     variants: [],
@@ -48,7 +48,7 @@ export default async function HomePage() {
       <div className="marquee" aria-hidden>
         <div className="marquee-track">
           {Array.from({ length: 2 }).map((_, i) => (
-            <span key={i}>Cross the line&nbsp;·&nbsp;Édition 2026&nbsp;·&nbsp;Imprimé à la demande&nbsp;·&nbsp;Zéro copie&nbsp;·&nbsp;Made in Paris&nbsp;·&nbsp;</span>
+            <span key={i}>Summer of 26&nbsp;·&nbsp;T-shirts custom&nbsp;·&nbsp;Pas des répliques&nbsp;·&nbsp;Imprimé à la demande&nbsp;·&nbsp;Made in Paris&nbsp;·&nbsp;</span>
           ))}
         </div>
       </div>
@@ -56,7 +56,7 @@ export default async function HomePage() {
       <section className="drop" id="drop">
         <div className="drop-head">
           <div>
-            <span className="drop-kicker">Drop 01 · 2026</span>
+            <span className="drop-kicker">Drop 01 · Été 26</span>
             <h2 className="display">Première ligne.</h2>
           </div>
           <Link href="/shop" className="drop-shop">Tout le shop →</Link>
@@ -79,7 +79,7 @@ export default async function HomePage() {
                 <h3>{brandTitle(p.title)}</h3>
                 <span className="card-price">{money(p.priceRange.minVariantPrice.amount, p.priceRange.minVariantPrice.currencyCode)}</span>
               </div>
-              <p className="card-sub">Imprimé à la demande · série numérotée</p>
+              <p className="card-sub">T-shirt custom · série numérotée</p>
             </Link>
           ))}
         </div>
@@ -87,10 +87,11 @@ export default async function HomePage() {
 
       <section className="band">
         <p className="band-kicker">Manifeste</p>
-        <h2 className="display">On dessine nos propres lignes.</h2>
+        <h2 className="display">Pas des maillots. Des pièces.</h2>
         <p className="band-text">
-          RedLine26 ne copie aucun club, aucune sélection, aucun blason. Nos couleurs, nos numéros,
-          nos lignes. Le football réécrit à Paris — imprimé seulement quand tu le commandes.
+          L'été 26, le monde entier vivra au rythme du foot. RedLine26 le célèbre avec des t-shirts
+          custom — dessinés comme des affiches, coupés comme du streetwear, imprimés à Paris
+          seulement quand tu les commandes.
         </p>
         <Link href="/notre-histoire" className="band-cta">Notre histoire →</Link>
       </section>

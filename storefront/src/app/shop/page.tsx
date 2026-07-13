@@ -6,7 +6,7 @@ import { PRODUCT_PHOTO } from "@/lib/assets";
 
 export const metadata: Metadata = {
   title: "RedLine26 — Shop",
-  description: "Tous les maillots RedLine26 : catalogue simple, fond blanc, pièces originales imprimées à la demande.",
+  description: "Tous les t-shirts RedLine26 : pièces custom pour l'été 26, imprimées à la demande.",
 };
 
 const DEMO: Product[] = [
@@ -21,10 +21,10 @@ function demo(handle: string, title: string, price: string): Product {
     id: handle,
     handle,
     title,
-    description: "Maillot RedLine26 original.",
-    descriptionHtml: "<p>Maillot RedLine26 original.</p>",
-    featuredImage: { url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
-    images: [{ url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
+    description: "T-shirt custom RedLine26.",
+    descriptionHtml: "<p>T-shirt custom RedLine26.</p>",
+    featuredImage: { url: PRODUCT_PHOTO, altText: `T-shirt ${title}`, width: 1024, height: 1024 },
+    images: [{ url: PRODUCT_PHOTO, altText: `T-shirt ${title}`, width: 1024, height: 1024 }],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },
     options: [{ name: "Taille", values: ["S", "M", "L", "XL"] }],
     variants: [],
@@ -54,7 +54,7 @@ export default async function ShopPage() {
   return (
     <div className="shop">
       <header className="shop-head">
-        <h1>Tous les maillots ({products.length})</h1>
+        <h1>Tous les t-shirts ({products.length})</h1>
         <Link href="/notre-histoire">Notre histoire</Link>
       </header>
 
@@ -83,7 +83,7 @@ export default async function ShopPage() {
             </div>
             <p className="label">{productLabel(product.handle, i)}</p>
             <h2>{brandTitle(product.title)}</h2>
-            <p className="desc">Original · imprimé à la demande</p>
+            <p className="desc">T-shirt custom · imprimé à la demande</p>
             <p className="price">{money(product.priceRange.minVariantPrice.amount, product.priceRange.minVariantPrice.currencyCode)}</p>
           </Link>
         ))}

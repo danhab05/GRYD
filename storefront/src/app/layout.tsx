@@ -8,10 +8,10 @@ import { SmoothScroll } from "@/components/smooth-scroll";
 export const metadata: Metadata = {
   title: "RedLine26 — Franchis la ligne",
   description:
-    "Maillots de foot 100% originaux, imprimés à la demande à Paris. Séries numérotées, zéro copie. Cross the line.",
+    "Le Mondial en streetwear. T-shirts custom pour l'été 26 — pas des maillots, des pièces. Imprimé à la demande à Paris, séries numérotées.",
   openGraph: {
     title: "RedLine26 — Franchis la ligne",
-    description: "Maillots de foot originaux, édition 2026. Zéro copie. Cross the line.",
+    description: "L'été 26 en streetwear. Des pièces custom, pas des maillots. Cross the line.",
     type: "website",
   },
 };
