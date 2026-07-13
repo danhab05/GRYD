@@ -39,7 +39,7 @@ const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "RedLine26 ");
 function productLabel(handle: string, i: number) {
   if (handle.includes("third")) return "Meilleure vente";
   if (i === 0) return "Nouveau";
-  return "Bientôt disponible";
+  return "Numéroté";
 }
 
 export default async function ShopPage() {
@@ -59,13 +59,13 @@ export default async function ShopPage() {
       </header>
 
       <div className="filters" aria-label="Filtres catalogue">
-        <button>Filtres (1)</button>
+        <button>Filtres</button>
         <button>Genre</button>
         <button>Prix</button>
         <button>Tailles</button>
       </div>
 
-      <section className="shop-grid" aria-label="Catalogue maillots">
+      <section className="shop-grid" aria-label="Catalogue t-shirts">
         {products.map((product, i) => (
           <Link href={`/products/${product.handle}`} className="shop-card" key={product.id}>
             <div className="visual">

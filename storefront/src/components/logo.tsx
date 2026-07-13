@@ -6,7 +6,7 @@
  */
 export function Logo({ className }: { className?: string }) {
   return (
-    <span className={`rl-logo ${className ?? ""}`.trim()} aria-label="Redline">
+    <span className={`rl-logo ${className ?? ""}`.trim()} aria-label="RedLine26">
       <span className="rl-word">Redline</span>
       <i className="rl-strike" aria-hidden />
     </span>

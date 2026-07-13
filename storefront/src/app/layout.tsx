@@ -8,7 +8,7 @@ import { SmoothScroll } from "@/components/smooth-scroll";
 export const metadata: Metadata = {
   title: "RedLine26 — Franchis la ligne",
   description:
-    "Le Mondial en streetwear. T-shirts custom pour l'été 26 — pas des maillots, des pièces. Imprimé à la demande à Paris, séries numérotées.",
+    "Le Mondial en streetwear. T-shirts custom pour l'été 26 — pas des maillots, des pièces. Pensés à Paris, imprimés à la demande. Séries numérotées.",
   openGraph: {
     title: "RedLine26 — Franchis la ligne",
     description: "L'été 26 en streetwear. Des pièces custom, pas des maillots. Cross the line.",

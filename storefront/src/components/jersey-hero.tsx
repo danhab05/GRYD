@@ -79,7 +79,7 @@ export function JerseyHero() {
       <div className="jh-grain" aria-hidden />
 
       <div className="jh-overlay">
-        <div className="jh-eyebrow">Paris · Été 26 · Summer of football</div>
+        <div className="jh-eyebrow">Paris · Summer of 26</div>
         <h1 className="jh-title">
           <span className="jh-line l1">Franchis</span>
           <span className="jh-line l2 signal">la ligne.</span>

@@ -96,7 +96,7 @@ export function Jersey({
             letterSpacing="3"
             fill={c.ink}
           >
-            {colorway === "archive" ? "RedLine26" : "RedLine"}
+            RedLine26
           </text>
           <text
             x="160"
@@ -109,7 +109,7 @@ export function Jersey({
             fill={c.ink}
             opacity="0.55"
           >
-            {colorway === "archive" ? "PARIS 26" : "PARIS"}
+            PARIS 26
           </text>
         </>
       ) : (

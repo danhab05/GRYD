@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "L'histoire RedLine26 : née pour l'été 26. Le Mondial en streetwear — des t-shirts custom, pas des maillots.",
 };
 
-const PRESS = ["TikTok", "Instagram", "Paris", "Le bitume"];
+const PRESS = ["TikTok", "Instagram", "redline26.co", "Summer of 26"];
 
 export default function NotreHistoirePage() {
   return (
@@ -27,7 +27,7 @@ export default function NotreHistoirePage() {
           <h2 className="display">Le déclic</h2>
           <p>
             Pour vivre un Mondial, t'avais deux options : la réplique hors de prix ou le merch
-            cheap. Entre les deux, rien. RedLine26 trace cette ligne — le t-shirt custom premium,
+            jetable. Entre les deux, rien. RedLine26 trace cette ligne — le t-shirt custom premium,
             pensé pour la rue, pas pour le vestiaire.
           </p>
         </article>
@@ -50,11 +50,10 @@ export default function NotreHistoirePage() {
       </section>
 
       <section className="seen">
-        <p className="story-kicker">Vous nous avez vus sur</p>
+        <p className="story-kicker">Suis la ligne</p>
         <div className="seen-list">
           {PRESS.map((item) => <span key={item}>{item}</span>)}
         </div>
-        <p className="seen-note">Emplacements prêts pour vos logos médias, créateurs ou boutiques partenaires.</p>
       </section>
 
       <section className="story-outro">

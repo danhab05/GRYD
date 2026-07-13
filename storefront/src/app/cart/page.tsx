@@ -37,7 +37,7 @@ export default function CartPage() {
 
   return (
     <div className="cart">
-      <Link href="/shop" className="cart-back">← Continuer les achats</Link>
+      <Link href="/shop" className="cart-back">← Retour au shop</Link>
 
       <header className="cart-head">
         <h1 className="display">Panier</h1>

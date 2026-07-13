@@ -48,7 +48,7 @@ export default async function HomePage() {
       <div className="marquee" aria-hidden>
         <div className="marquee-track">
           {Array.from({ length: 2 }).map((_, i) => (
-            <span key={i}>Summer of 26&nbsp;·&nbsp;T-shirts custom&nbsp;·&nbsp;Pas des répliques&nbsp;·&nbsp;Imprimé à la demande&nbsp;·&nbsp;Made in Paris&nbsp;·&nbsp;</span>
+            <span key={i}>Summer of 26&nbsp;·&nbsp;T-shirts custom&nbsp;·&nbsp;Pas des répliques&nbsp;·&nbsp;Imprimé à la demande&nbsp;·&nbsp;Designed in Paris&nbsp;·&nbsp;</span>
           ))}
         </div>
       </div>
@@ -86,11 +86,11 @@ export default async function HomePage() {
       </section>
 
       <section className="band">
-        <p className="band-kicker">Manifeste</p>
+        <p className="band-kicker">La marque</p>
         <h2 className="display">Pas des maillots. Des pièces.</h2>
         <p className="band-text">
           L'été 26, le monde entier vivra au rythme du foot. RedLine26 le célèbre avec des t-shirts
-          custom — dessinés comme des affiches, coupés comme du streetwear, imprimés à Paris
+          custom — dessinés à Paris comme des affiches, coupés comme du streetwear, imprimés
           seulement quand tu les commandes.
         </p>
         <Link href="/notre-histoire" className="band-cta">Notre histoire →</Link>

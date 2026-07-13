@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,22 +13,22 @@ const COPY_BY_HANDLE: Record<string, { title: string; html: string }> = {
   "gryd-home-beton": {
     title: "RedLine26 Home / Bleu nuit",
     html:
-      "<p><strong>Drop 01 · La fondation.</strong> Bleu nuit, esprit affiche. Un t-shirt custom pour l'été 26 — pas un maillot, une pièce.</p><p>Imprimé à la demande à Paris. Série numérotée, coupe unisexe.</p>",
+      "<p><strong>La fondation.</strong> Bleu nuit, esprit affiche. Un t-shirt custom pour l'été 26 — pas un maillot, une pièce.</p><p>Pensé à Paris, imprimé à la demande. Série numérotée, coupe unisexe.</p>",
   },
   "gryd-away-craie": {
     title: "RedLine26 Away / Crème papier",
     html:
-      "<p><strong>Drop 01 · L'extérieur.</strong> Base crème, détails rouge archive. L'énergie des grands étés de foot, portée en streetwear.</p><p>Imprimé à la demande à Paris. Série numérotée, coupe unisexe.</p>",
+      "<p><strong>L'extérieur.</strong> Base crème, détails rouge archive. L'énergie des grands étés de foot, portée en streetwear.</p><p>Pensé à Paris, imprimé à la demande. Série numérotée, coupe unisexe.</p>",
   },
   "gryd-third-signal": {
     title: "RedLine26 Third / Rouge archive",
     html:
-      "<p><strong>Drop 01 · La pièce phare.</strong> Rouge archive, lignes nettes. La ligne qu'on trace, celle qu'on franchit.</p><p>Imprimé à la demande à Paris. Série numérotée, coupe unisexe.</p>",
+      "<p><strong>La pièce phare.</strong> Rouge archive, lignes nettes. La ligne qu'on trace, celle qu'on franchit.</p><p>Pensé à Paris, imprimé à la demande. Série numérotée, coupe unisexe.</p>",
   },
   "redline26-keeper-or-nuit": {
     title: "RedLine26 Keeper / Or nuit",
     html:
-      "<p><strong>Drop 01 · Le dernier rempart.</strong> Or nuit, coupe droite. Le calme avant le penalty.</p><p>Imprimé à la demande à Paris. Série numérotée, coupe unisexe.</p>",
+      "<p><strong>Le dernier rempart.</strong> Or nuit, coupe droite. Le calme avant le penalty.</p><p>Pensé à Paris, imprimé à la demande. Série numérotée, coupe unisexe.</p>",
   },
 };
 
@@ -65,6 +66,16 @@ function demo(handle: string, title: string, price: string): Product {
       price: { amount: price, currencyCode: "EUR" },
       selectedOptions: [{ name: "Taille", value: s }],
     })),
+  };
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }): Promise<Metadata> {
+  const { handle } = await params;
+  const title = COPY_BY_HANDLE[handle]?.title ?? DEMO[handle]?.title;
+  if (!title) return {};
+  return {
+    title: `${title} — RedLine26`,
+    description: "T-shirt custom pour l'été 26 — pas un maillot, une pièce. Imprimé à la demande, série numérotée.",
   };
 }
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "RedLine26 — Manifeste",
   description:
-    "Le manifeste RedLine26 : l'été 26 en streetwear. Des t-shirts custom, pas des maillots. Imprimé à la demande à Paris.",
+    "Le manifeste RedLine26 : l'été 26 en streetwear. Des t-shirts custom, pas des maillots. Pensés à Paris, imprimés à la demande.",
 };
 
 const SECTEURS = [
@@ -18,13 +18,13 @@ const SECTEURS = [
     n: "02",
     titre: "Pas des maillots",
     corps:
-      "Des t-shirts custom qui célèbrent le jeu — dessinés comme des affiches, coupés comme du streetwear. La réplique de vestiaire, très peu pour nous.",
+      "Des t-shirts custom qui célèbrent le jeu, taillés pour la rue. La réplique de vestiaire, très peu pour nous.",
   },
   {
     n: "03",
     titre: "Rien sans toi",
     corps:
-      "Impression à la demande. Aucune pièce n'existe tant que tu ne l'as pas commandée — pas de stock mort. Tu commandes, on imprime, on t'envoie. Séries numérotées.",
+      "Impression à la demande. Aucune pièce n'existe tant que tu ne l'as pas commandée — pas de stock mort. Tu commandes, on imprime, la pièce part. Séries numérotées.",
   },
   {
     n: "04",
