@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
+import { Logo } from "@/components/logo";
 
 export function Nav() {
   const { cart, open } = useCart();
@@ -9,8 +10,8 @@ export function Nav() {
 
   return (
     <nav className="nav">
-      <Link href="/" className="logo">
-        RedLine26
+      <Link href="/" className="logo" aria-label="Redline — accueil">
+        <Logo />
       </Link>
       <div className="nav-links">
         <Link href="/shop">Shop</Link>
