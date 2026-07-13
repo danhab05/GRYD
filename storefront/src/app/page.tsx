@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllProducts, type Product } from "@/lib/shopify";
 import { JerseyHero } from "@/components/jersey-hero";
+import { Logo } from "@/components/logo";
 import { PRODUCT_PHOTO } from "@/lib/assets";
 
 /** Données de démo si le token Shopify n'est pas encore branché — le site tourne quand même. */
@@ -95,7 +96,7 @@ export default async function HomePage() {
       </section>
 
       <footer className="foot">
-        <span className="logo display">RedLine26</span>
+        <span className="logo"><Logo /></span>
         <div className="foot-links">
           <Link href="/shop">Shop</Link>
           <Link href="/notre-histoire">Notre histoire</Link>
