@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "RedLine26 — Manifeste",
   description:
-    "On dessine nos propres lignes. RedLine26 ne copie aucun club, aucune sélection, aucun blason — zéro copie. Imprimé à la demande à Paris.",
+    "Le manifeste RedLine26 : l'été 26 en streetwear. Des t-shirts custom, pas des maillots. Pensés à Paris, imprimés à la demande.",
 };
 
 const SECTEURS = [
@@ -12,25 +12,25 @@ const SECTEURS = [
     n: "01",
     titre: "La ligne rouge",
     corps:
-      "Le nom, c'est le concept. La ligne rouge, c'est celle qu'on trace nous-mêmes — pas celle des autres. On l'invente, on la franchit.",
+      "Le nom, c'est le concept. La ligne rouge du calendrier : l'été 26, celui où le monde entier regarde le foot. On la trace, on la franchit.",
   },
   {
     n: "02",
-    titre: "Zéro copie",
+    titre: "Pas des maillots",
     corps:
-      "RedLine26 ne reproduit aucun club, aucune sélection, aucun blason. Nos couleurs, nos numéros, nos lignes. Inventer une équipe qui n'existe que chez nous.",
+      "Des t-shirts custom qui célèbrent le jeu, taillés pour la rue. La réplique de vestiaire, très peu pour nous.",
   },
   {
     n: "03",
     titre: "Rien sans toi",
     corps:
-      "Impression à la demande. Aucune pièce n'existe tant que tu ne l'as pas commandée — pas de stock mort. Tu commandes, on imprime, on t'envoie. Séries numérotées.",
+      "Impression à la demande. Aucune pièce n'existe tant que tu ne l'as pas commandée — pas de stock mort. Tu commandes, on imprime, la pièce part. Séries numérotées.",
   },
   {
     n: "04",
     titre: "Édité à Paris",
     corps:
-      "Football et streetwear, coupe unisexe. Le maillot sort du terrain pour entrer dans la rue. Cross the line.",
+      "Pensé à Paris, imprimé à la demande, porté partout où l'été 26 se joue. Cross the line.",
   },
 ];
 

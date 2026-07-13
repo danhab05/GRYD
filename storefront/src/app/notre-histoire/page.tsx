@@ -3,20 +3,21 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "RedLine26 — Notre histoire",
-  description: "L'histoire RedLine26 : football, rue, affiches vintage et maillots originaux imprimés à la demande.",
+  description: "L'histoire RedLine26 : née pour l'été 26. Le Mondial en streetwear — des t-shirts custom, pas des maillots.",
 };
 
-const PRESS = ["TikTok", "Instagram", "Paris", "Le bitume"];
+const PRESS = ["TikTok", "Instagram", "redline26.co", "Summer of 26"];
 
 export default function NotreHistoirePage() {
   return (
     <div className="story">
       <section className="story-hero">
         <p className="story-kicker">Notre histoire</p>
-        <h1 className="display">Née sur la ligne rouge.</h1>
+        <h1 className="display">Née pour l'été 26.</h1>
         <p>
-          RedLine26 dessine des maillots de foot 100% originaux : l'énergie du jeu, zéro copie.
-          Des pièces pensées comme des affiches, imprimées à Paris — seulement quand tu les commandes.
+          En 2026, le monde entier vivra au rythme du foot. RedLine26 est née pour cet été-là :
+          des t-shirts custom qui célèbrent le jeu — dessinés comme des affiches, coupés comme du
+          streetwear. Pas des maillots. Des pièces.
         </p>
       </section>
 
@@ -25,16 +26,17 @@ export default function NotreHistoirePage() {
           <span>01</span>
           <h2 className="display">Le déclic</h2>
           <p>
-            On voulait l'émotion des grands soirs sans rien copier : pas de blason réel,
-            pas de sponsor, pas de sélection. Juste des lignes, des numéros, des couleurs à nous.
+            Pour vivre un Mondial, t'avais deux options : la réplique hors de prix ou le merch
+            jetable. Entre les deux, rien. RedLine26 trace cette ligne — le t-shirt custom premium,
+            pensé pour la rue, pas pour le vestiaire.
           </p>
         </article>
         <article>
           <span>02</span>
           <h2 className="display">La ligne</h2>
           <p>
-            Rouge archive, bleu nuit, crème papier. RedLine26 tire une ligne entre l'affiche
-            de match vintage et le streetwear parisien.
+            Rouge archive, bleu nuit, crème papier. Chaque édition raconte une nation, un été,
+            un frisson — façon affiche vintage, jamais façon réplique.
           </p>
         </article>
         <article>
@@ -48,16 +50,15 @@ export default function NotreHistoirePage() {
       </section>
 
       <section className="seen">
-        <p className="story-kicker">Vous nous avez vus sur</p>
+        <p className="story-kicker">Suis la ligne</p>
         <div className="seen-list">
           {PRESS.map((item) => <span key={item}>{item}</span>)}
         </div>
-        <p className="seen-note">Emplacements prêts pour vos logos médias, créateurs ou boutiques partenaires.</p>
       </section>
 
       <section className="story-outro">
         <h2 className="display">La suite se joue.</h2>
-        <Link href="/shop">Voir les maillots →</Link>
+        <Link href="/shop">Voir les t-shirts →</Link>
       </section>
 
       <style>{`

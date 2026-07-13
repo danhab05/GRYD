@@ -10,12 +10,12 @@ export function Nav() {
 
   return (
     <nav className="nav">
-      <Link href="/" className="logo" aria-label="Redline — accueil">
+      <Link href="/" className="logo" aria-label="RedLine26 — accueil">
         <Logo />
       </Link>
       <div className="nav-links">
         <Link href="/shop">Shop</Link>
-        <Link href="/#drop">Le Drop</Link>
+        <Link href="/#drop">Le drop</Link>
         <Link href="/notre-histoire">Notre histoire</Link>
       </div>
       <button className="cart-btn" onClick={open} aria-label="Ouvrir le panier">

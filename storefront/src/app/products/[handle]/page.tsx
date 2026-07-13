@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,22 +13,22 @@ const COPY_BY_HANDLE: Record<string, { title: string; html: string }> = {
   "gryd-home-beton": {
     title: "RedLine26 Home / Bleu nuit",
     html:
-      "<p><strong>Drop 01 · Le maillot fondation.</strong> Bleu nuit, coupe technique, série numérotée. La première ligne de RedLine26.</p><p>100% original — aucun club, sélection ou blason réel. Imprimé à la demande à Paris.</p>",
+      "<p><strong>La fondation.</strong> Bleu nuit, esprit affiche. Un t-shirt custom pour l'été 26 — pas un maillot, une pièce.</p><p>Pensé à Paris, imprimé à la demande. Série numérotée, coupe unisexe.</p>",
   },
   "gryd-away-craie": {
     title: "RedLine26 Away / Crème papier",
     html:
-      "<p><strong>Drop 01 · L'extérieur.</strong> Base crème, détails rouge archive. L'énergie du football, zéro copie.</p><p>Série numérotée, coupe unisexe, imprimée à la demande.</p>",
+      "<p><strong>L'extérieur.</strong> Base crème, détails rouge archive. L'énergie des grands étés de foot, portée en streetwear.</p><p>Pensé à Paris, imprimé à la demande. Série numérotée, coupe unisexe.</p>",
   },
   "gryd-third-signal": {
     title: "RedLine26 Third / Rouge archive",
     html:
-      "<p><strong>Drop 01 · La pièce phare.</strong> Rouge archive, lignes nettes. C'est la ligne qu'on trace, celle qu'on franchit.</p><p>Impression à la demande, série numérotée, coupe unisexe. Aucune référence protégée.</p>",
+      "<p><strong>La pièce phare.</strong> Rouge archive, lignes nettes. La ligne qu'on trace, celle qu'on franchit.</p><p>Pensé à Paris, imprimé à la demande. Série numérotée, coupe unisexe.</p>",
   },
   "redline26-keeper-or-nuit": {
     title: "RedLine26 Keeper / Or nuit",
     html:
-      "<p><strong>Drop 01 · L'édition gardien.</strong> Or nuit, coupe technique. Le dernier rempart, en 100% original.</p><p>Impression à la demande, série numérotée, coupe unisexe.</p>",
+      "<p><strong>Le dernier rempart.</strong> Or nuit, coupe droite. Le calme avant le penalty.</p><p>Pensé à Paris, imprimé à la demande. Série numérotée, coupe unisexe.</p>",
   },
 };
 
@@ -52,10 +53,10 @@ function demo(handle: string, title: string, price: string): Product {
     id: handle,
     handle,
     title,
-    description: "Maillot RedLine26 imprimé à la demande. Série numérotée.",
-    descriptionHtml: "<p>Maillot RedLine26 imprimé à la demande à Paris. Série limitée numérotée. Coupe unisexe.</p>",
-    featuredImage: { url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 },
-    images: [{ url: PRODUCT_PHOTO, altText: `Maillot ${title}`, width: 1024, height: 1024 }],
+    description: "T-shirt custom RedLine26, imprimé à la demande. Série numérotée.",
+    descriptionHtml: "<p>T-shirt custom RedLine26, imprimé à la demande à Paris. Série numérotée, coupe unisexe.</p>",
+    featuredImage: { url: PRODUCT_PHOTO, altText: `T-shirt ${title}`, width: 1024, height: 1024 },
+    images: [{ url: PRODUCT_PHOTO, altText: `T-shirt ${title}`, width: 1024, height: 1024 }],
     priceRange: { minVariantPrice: { amount: price, currencyCode: "EUR" } },
     options: [{ name: "Taille", values: ["S", "M", "L", "XL"] }],
     variants: ["S", "M", "L", "XL"].map((s) => ({
@@ -65,6 +66,16 @@ function demo(handle: string, title: string, price: string): Product {
       price: { amount: price, currencyCode: "EUR" },
       selectedOptions: [{ name: "Taille", value: s }],
     })),
+  };
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }): Promise<Metadata> {
+  const { handle } = await params;
+  const title = COPY_BY_HANDLE[handle]?.title ?? DEMO[handle]?.title;
+  if (!title) return {};
+  return {
+    title: `${title} — RedLine26`,
+    description: "T-shirt custom pour l'été 26 — pas un maillot, une pièce. Imprimé à la demande, série numérotée.",
   };
 }
 
@@ -94,7 +105,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
         </div>
 
         <div className="pdp-info">
-          <span className="pdp-kicker">Drop 01 · Édition 2026</span>
+          <span className="pdp-kicker">Drop 01 · Été 26</span>
           <h1 className="display">{copy.title}</h1>
           <div className="pdp-desc" dangerouslySetInnerHTML={{ __html: copy.html }} />
           <ProductBuy product={product} />
