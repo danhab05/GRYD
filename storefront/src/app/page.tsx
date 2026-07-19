@@ -10,6 +10,7 @@ const DEMO: Product[] = [
   demo("t-shirt-boxy-homme", "RedLine26 T-shirt Boxy / Oversize", "40.00"),
   demo("maillot-all-over-unisexe-1", "RedLine26 Maillot All-Over / Édition Ville", "36.00"),
   demo("maillot-all-over-unisexe", "RedLine26 Maillot All-Over / Édition Match", "79.00"),
+  demo("stickers-el-dictator", "Stickers El Dictator", "8.50"),
 ];
 
 function demo(handle: string, title: string, price: string): Product {
@@ -63,7 +64,7 @@ export default async function HomePage() {
         </div>
 
         <div className="grid">
-          {products.slice(0, 3).map((p, i) => (
+          {products.slice(0, 4).map((p, i) => (
             <Link href={`/products/${p.handle}`} key={p.id} className="card">
               <div className="card-visual">
                 <Image
@@ -125,7 +126,7 @@ function HomeStyles() {
       .drop-shop{font-size:14px;font-weight:800;text-decoration:underline;text-underline-offset:5px;white-space:nowrap}
       .drop-shop:hover{color:var(--signal)}
 
-      .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 28px}
+      .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px 28px}
       .card{display:block}
       .card-visual{position:relative;aspect-ratio:1/1.12;background:var(--wash);border-radius:14px;overflow:hidden;border:1px solid var(--line-soft)}
       .card-visual :global(img){transition:transform .6s cubic-bezier(.16,1,.3,1)}
@@ -149,6 +150,7 @@ function HomeStyles() {
       .foot-links a:hover{color:var(--signal)}
       .foot-copy{font-size:13px;color:var(--muted)}
 
+      @media(max-width:1040px){.grid{grid-template-columns:repeat(2,1fr)}}
       @media(max-width:760px){
         .drop{padding:72px 18px 30px}
         .grid{grid-template-columns:1fr 1fr;gap:24px 16px}
