@@ -104,6 +104,14 @@ export default async function HomePage() {
           <Link href="/notre-histoire">Notre histoire</Link>
           <Link href="/cart">Panier</Link>
         </div>
+        <nav className="foot-legal" aria-label="Informations légales">
+          <Link href="/legal/mentions-legales">Mentions légales</Link>
+          <Link href="/legal/cgv">CGV</Link>
+          <Link href="/legal/confidentialite">Confidentialité</Link>
+          <Link href="/legal/retours">Retours</Link>
+          <Link href="/legal/expedition">Expédition</Link>
+          <Link href="/legal/contact">Contact</Link>
+        </nav>
         <span className="foot-copy">© {new Date().getFullYear()} · Paris · redline26.co</span>
       </footer>
 
@@ -148,6 +156,8 @@ function HomeStyles() {
       .foot .logo{font-size:20px}
       .foot-links{display:flex;gap:26px;font-size:14px;font-weight:700}
       .foot-links a:hover{color:var(--signal)}
+      .foot-legal{flex-basis:100%;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;font-weight:600;color:var(--muted);margin-top:8px;padding-top:20px;border-top:1px solid var(--line-soft)}
+      .foot-legal a:hover{color:var(--signal)}
       .foot-copy{font-size:13px;color:var(--muted)}
 
       @media(max-width:1040px){.grid{grid-template-columns:repeat(2,1fr)}}
