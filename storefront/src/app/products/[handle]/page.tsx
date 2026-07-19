@@ -10,25 +10,25 @@ const brandTitle = (title: string) => title.replace(/^GRYD\s*/i, "RedLine26 ");
 const brandHtml = (html: string) => html.replace(/GRYD/g, "RedLine26").replace(/Gryd/g, "RedLine26");
 
 const COPY_BY_HANDLE: Record<string, { title: string; html: string }> = {
-  "gryd-home-beton": {
-    title: "RedLine26 Home / Bleu nuit",
+  "t-shirt-boxy-homme": {
+    title: "RedLine26 T-shirt Boxy / Oversize",
     html:
-      "<p><strong>La fondation.</strong> Bleu nuit, esprit affiche. Un t-shirt custom pour l'été 26 — pas un maillot, une pièce.</p><p>Pensé à Paris, imprimé à la demande. Série numérotée, coupe unisexe.</p>",
+      "<p><strong>La pièce de base.</strong> Coupe boxy oversize, coton peigné 240 g, épaules tombantes et col côtelé renforcé. Le streetwear de l'été 26.</p><p>Dessiné à Paris, imprimé à la demande. Coupe unisexe.</p>",
   },
-  "gryd-away-craie": {
-    title: "RedLine26 Away / Crème papier",
+  "maillot-all-over-unisexe": {
+    title: "RedLine26 Maillot All-Over / Édition Match",
     html:
-      "<p><strong>L'extérieur.</strong> Base crème, détails rouge archive. L'énergie des grands étés de foot, portée en streetwear.</p><p>Pensé à Paris, imprimé à la demande. Série numérotée, coupe unisexe.</p>",
+      "<p><strong>La pièce phare.</strong> Maillot all-over 100 % polyester recyclé, col en V, coupe unisexe respirante. L'édition Match du Drop 01.</p><p>Dessiné à Paris, imprimé à la demande.</p>",
   },
-  "gryd-third-signal": {
-    title: "RedLine26 Third / Rouge archive",
+  "maillot-all-over-unisexe-1": {
+    title: "RedLine26 Maillot All-Over / Édition Ville",
     html:
-      "<p><strong>La pièce phare.</strong> Rouge archive, lignes nettes. La ligne qu'on trace, celle qu'on franchit.</p><p>Pensé à Paris, imprimé à la demande. Série numérotée, coupe unisexe.</p>",
+      "<p><strong>Le maillot du quotidien.</strong> All-over 100 % polyester recyclé, coupe unisexe. L'édition Ville : le terrain ramené en ville.</p><p>Dessiné à Paris, imprimé à la demande.</p>",
   },
-  "redline26-keeper-or-nuit": {
-    title: "RedLine26 Keeper / Or nuit",
+  "stickers-el-dictator": {
+    title: "Stickers El Dictator",
     html:
-      "<p><strong>Le dernier rempart.</strong> Or nuit, coupe droite. Le calme avant le penalty.</p><p>Pensé à Paris, imprimé à la demande. Série numérotée, coupe unisexe.</p>",
+      "<p><strong>El Dictator.</strong> L'autorité du terrain en format poche. Découpe nette, plusieurs tailles. Le premier signe du Drop 01.</p><p>Imprimé à la demande.</p>",
   },
 };
 
@@ -42,10 +42,10 @@ function displayCopy(product: Product) {
 }
 
 const DEMO: Record<string, Product> = {
-  "gryd-home-beton": demo("gryd-home-beton", "RedLine26 Home / Bleu nuit", "55.00"),
-  "gryd-away-craie": demo("gryd-away-craie", "RedLine26 Away / Crème papier", "55.00"),
-  "gryd-third-signal": demo("gryd-third-signal", "RedLine26 Third / Rouge archive", "60.00"),
-  "redline26-keeper-or-nuit": demo("redline26-keeper-or-nuit", "RedLine26 Keeper / Or nuit", "60.00"),
+  "t-shirt-boxy-homme": demo("t-shirt-boxy-homme", "RedLine26 T-shirt Boxy / Oversize", "40.00"),
+  "maillot-all-over-unisexe-1": demo("maillot-all-over-unisexe-1", "RedLine26 Maillot All-Over / Édition Ville", "36.00"),
+  "maillot-all-over-unisexe": demo("maillot-all-over-unisexe", "RedLine26 Maillot All-Over / Édition Match", "79.00"),
+  "stickers-el-dictator": demo("stickers-el-dictator", "Stickers El Dictator", "8.50"),
 };
 
 function demo(handle: string, title: string, price: string): Product {

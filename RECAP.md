@@ -1,6 +1,6 @@
 # RECAP GRYD — état réel du projet
 
-_Dernière mise à jour : 2026-07-07_
+_Dernière mise à jour : 2026-07-19_
 
 Recap honnête : la vision, ce qu'on a vraiment, ce qui manque, qui fait quoi, et
 tous les identifiants utiles. Guide technique : `CLAUDE.md` / `AGENTS.md`.
@@ -74,11 +74,11 @@ tape l'API Storefront ; le checkout reste chez Shopify.
 ## 4. Ce qui MANQUE ❌ (pour lancer pour de vrai)
 
 ### Produit / visuels
-- **Printful non connecté.** À faire : brancher l'app Printful à Shopify → uploader
-  les designs → push sur les 3 produits. Les **images** remonteront automatiquement
-  sur les fiches (aujourd'hui : placeholder maillot SVG partout). Ça configure aussi
-  l'impression + l'expédition.
-- **Designs originaux** à finaliser (Ethan).
+- **Printful connecté ✅.** Les designs du Drop 01 (t-shirt boxy, 2 maillots all-over,
+  stickers El Dictator) sont poussés depuis Printful → produits Shopify avec **vraies
+  images**, publiés sur le canal headless + Boutique en ligne, ajoutés à `Drop 01`.
+  Le front les affiche automatiquement (`getAllProducts`).
+- **Designs originaux** : compléter le drop / prochaines pièces (Ethan).
 
 ### Paiement / mise en vente
 - **Aucun moyen de paiement actif.** Settings → Paiements → activer **Shopify
@@ -123,13 +123,18 @@ tape l'API Storefront ; le checkout reste chez Shopify.
 
 | Élément | Valeur |
 |---|---|
-| Store | GRYD — `astratech-9955.myshopify.com` — Basic, EUR, France |
+| Store | RedLine — `astratech-9955.myshopify.com` — Basic, EUR, France |
 | Canal headless | `Gryd Headless` — `gid://shopify/Publication/351528091990` |
-| Collection | `Drop 01` — handle `drop-01` — `gid://shopify/Collection/702121935190` |
-| Produit Home / Béton | handle `gryd-home-beton` — `gid://shopify/Product/10948147675478` — 55 € |
-| Produit Away / Craie | handle `gryd-away-craie` — `gid://shopify/Product/10948147708246` — 55 € |
-| Produit Third / Signal | handle `gryd-third-signal` — `gid://shopify/Product/10948147806550` — 60 € |
+| Collection | `Drop 01` — handle `drop-01` — `gid://shopify/Collection/702121935190` — **4 produits** |
+| Produit — Boxy Tee | handle `t-shirt-boxy-homme` — `gid://shopify/Product/10983689093462` — 40 € |
+| Produit — Maillot Édition Match | handle `maillot-all-over-unisexe` — `gid://shopify/Product/10983401423190` — 79 € |
+| Produit — Maillot Édition Ville | handle `maillot-all-over-unisexe-1` — `gid://shopify/Product/10983671103830` — 36 € |
+| Produit — Stickers El Dictator | handle `stickers-el-dictator` — `gid://shopify/Product/10969725272406` — 8,50 € |
 | API version Storefront | `2025-01` |
+
+> Les 4 produits ci-dessus sont **synchronisés depuis Printful**, `ACTIVE`, publiés sur
+> le canal `Gryd Headless` **et** la Boutique en ligne. Les 4 « Exemple de produit »
+> (échantillons Shopify par défaut) restent hors du canal headless → invisibles sur le front.
 | Vercel prod | `gryd-psi.vercel.app` (⚠️ = `main` = ancien design ; Protection ON) |
 | Branche de dev | `claude/gryd-ecommerce-setup-36pzd4` |
 | PR | #1 (storefront initial) **mergée** ; commits suivants (cart/manifeste + refonte hero) **en attente de merge** |
