@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 };
 
 const DEMO: Product[] = [
-  demo("gryd-home-beton", "RedLine26 Home / Bleu nuit", "55.00"),
-  demo("gryd-away-craie", "RedLine26 Away / Crème papier", "55.00"),
-  demo("gryd-third-signal", "RedLine26 Third / Rouge archive", "60.00"),
-  demo("redline26-keeper-or-nuit", "RedLine26 Keeper / Or nuit", "60.00"),
+  demo("t-shirt-boxy-homme", "RedLine26 T-shirt Boxy / Oversize", "40.00"),
+  demo("maillot-all-over-unisexe-1", "RedLine26 Maillot All-Over / Édition Ville", "36.00"),
+  demo("maillot-all-over-unisexe", "RedLine26 Maillot All-Over / Édition Match", "79.00"),
+  demo("stickers-el-dictator", "Stickers El Dictator", "8.50"),
 ];
 
 function demo(handle: string, title: string, price: string): Product {
